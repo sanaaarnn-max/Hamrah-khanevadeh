@@ -3,34 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>همراه خانواده</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
-font-family:Tahoma,Arial;
-background:linear-gradient(135deg,#e8f5e9,#e3f2fd);
+font-family:Tahoma,Arial,sans-serif;
+background:
+linear-gradient(135deg,#e3f2fd,#f1f8e9);
 color:#263238;
+min-height:100vh;
 }
 
 .container{
 max-width:520px;
 margin:auto;
-padding:25px 18px;
-text-align:center;
+padding:22px 16px 40px;
 }
 
-h1{color:#1565c0;font-size:32px}
-.subtitle{color:#546e7a;margin-bottom:25px}
+.header{
+background:linear-gradient(135deg,#1565c0,#1976d2);
+color:white;
+padding:28px 20px;
+border-radius:25px;
+box-shadow:0 8px 25px #0002;
+margin-bottom:20px;
+}
+
+.header h1{
+margin:0;
+font-size:30px;
+}
+
+.header p{
+margin:10px 0 0;
+font-size:14px;
+opacity:.9;
+}
 
 .card,.panel{
 background:white;
-padding:22px;
-margin:15px 0;
+padding:20px;
+margin:14px 0;
 border-radius:20px;
-box-shadow:0 5px 18px #0002;
+box-shadow:0 5px 20px #0001;
+}
+
+.card{
+transition:.2s;
+}
+
+.card:active{
+transform:scale(.98);
+}
+
+.card h2{
+margin:5px 0 8px;
+}
+
+.card p{
+color:#607d8b;
+font-size:14px;
+}
+
+.role-icon{
+font-size:38px;
+margin-bottom:5px;
 }
 
 button{
@@ -38,64 +82,78 @@ width:100%;
 padding:14px;
 margin-top:10px;
 border:0;
-border-radius:12px;
+border-radius:13px;
 background:#1976d2;
 color:white;
 font-size:16px;
+font-family:Tahoma;
+cursor:pointer;
+box-shadow:0 3px 8px #0002;
 }
 
-.green{background:#43a047}
-.gray{background:#78909c}
+button:active{
+transform:scale(.98);
+}
 
-textarea,select{
-width:90%;
-padding:12px;
-margin:8px;
-border:1px solid #ddd;
-border-radius:10px;
+.green{
+background:#43a047;
+}
+
+.gray{
+background:#78909c;
+}
+
+textarea,
+select{
+width:100%;
+padding:13px;
+margin:8px 0;
+border:1px solid #dce3e8;
+border-radius:12px;
 font-family:Tahoma;
+font-size:14px;
+background:white;
 }
 
 textarea{
-height:90px;
+height:95px;
 resize:none;
 }
 
 select{
-height:45px;
-background:white;
+height:48px;
 }
 
 .notice{
 background:#f1f8e9;
-padding:14px;
-border-radius:12px;
+padding:15px;
+border-radius:13px;
 margin-top:10px;
 text-align:right;
-line-height:1.8;
+line-height:1.9;
 }
 
 .student{
 background:#e3f2fd;
-padding:14px;
-border-radius:12px;
+padding:15px;
+border-radius:14px;
 margin-top:10px;
 text-align:right;
-line-height:1.8;
+line-height:1.9;
 }
 
 .message{
 background:#fff8e1;
-padding:14px;
-border-radius:12px;
+padding:15px;
+border-radius:14px;
 margin-top:10px;
 text-align:right;
-line-height:1.8;
+line-height:1.9;
 }
 
 .infoBox{
-background:#f5f7fa;
-padding:15px;
+background:#f7f9fb;
+padding:16px;
 border-radius:14px;
 margin-top:10px;
 text-align:right;
@@ -115,24 +173,26 @@ margin-top:15px;
 }
 
 .stat{
-background:#f5f7fa;
+background:#f7f9fb;
 padding:18px 10px;
-border-radius:16px;
-box-shadow:0 3px 10px #0001;
+border-radius:17px;
+box-shadow:0 3px 12px #0001;
 }
 
-.stat .icon{font-size:28px}
+.stat .icon{
+font-size:28px;
+}
 
 .stat .number{
-font-size:26px;
+font-size:27px;
 font-weight:bold;
 color:#1565c0;
-margin:8px 0;
+margin:7px 0;
 }
 
 .stat .title{
-font-size:14px;
-color:#546e7a;
+font-size:13px;
+color:#607d8b;
 }
 
 .status{
@@ -148,10 +208,10 @@ color:#2e7d32;
 background:#fff3e0;
 border-right:5px solid #fb8c00;
 padding:15px;
-border-radius:12px;
+border-radius:13px;
 margin-top:10px;
 text-align:right;
-line-height:1.8;
+line-height:1.9;
 }
 
 .badge{
@@ -159,10 +219,18 @@ display:inline-block;
 background:#e53935;
 color:white;
 border-radius:20px;
-padding:4px 9px;
-font-size:12px;
+padding:3px 8px;
+font-size:11px;
 margin-right:5px;
 }
+
+.footer{
+text-align:center;
+color:#78909c;
+font-size:12px;
+margin-top:25px;
+}
+
 </style>
 </head>
 
@@ -170,42 +238,86 @@ margin-right:5px;
 
 <div class="container">
 
+<div class="header">
+
 <h1>🌱 همراه خانواده</h1>
 
-<div class="subtitle">
+<p>
 سامانه هوشمند ارتباط مدرسه و خانواده
+</p>
+
 </div>
+
 
 <div id="home">
 
 <div class="card">
-<h2>👨‍👩‍👧 والدین</h2>
-<p>ارتباط با مدرسه و پیگیری امور دانش‌آموز</p>
-<button onclick="login('parent')">ورود والدین</button>
+
+<div class="role-icon">👨‍👩‍👧</div>
+
+<h2>والدین</h2>
+
+<p>
+پیگیری وضعیت آموزشی و ارتباط مستقیم با مدرسه
+</p>
+
+<button onclick="login('parent')">
+ورود والدین
+</button>
+
 </div>
+
 
 <div class="card">
-<h2>👩‍🏫 معلمان</h2>
-<p>مدیریت ارتباط با خانواده‌ها</p>
-<button onclick="login('teacher')">ورود معلمان</button>
+
+<div class="role-icon">👩‍🏫</div>
+
+<h2>معلمان</h2>
+
+<p>
+مدیریت دانش‌آموزان و ارتباط با خانواده‌ها
+</p>
+
+<button onclick="login('teacher')">
+ورود معلمان
+</button>
+
 </div>
+
 
 <div class="card">
-<h2>👩‍💼 مدیریت مدرسه</h2>
-<p>مدیریت ارتباطات و درخواست‌ها</p>
-<button onclick="login('admin')">ورود مدیریت</button>
+
+<div class="role-icon">👩‍💼</div>
+
+<h2>مدیریت مدرسه</h2>
+
+<p>
+مدیریت ارتباطات، اطلاعیه‌ها و درخواست‌ها
+</p>
+
+<button onclick="login('admin')">
+ورود مدیریت
+</button>
+
 </div>
 
 </div>
+
 
 <div id="panel" class="panel" style="display:none"></div>
 
+
+<div class="footer">
+نسخه نمایشی سامانه «همراه خانواده»
 </div>
+
+</div>
+
 
 <script>
 
 /* =========================
-   اطلاعات اولیه
+اطلاعات
 ========================= */
 
 let requests =
@@ -269,7 +381,7 @@ text:"جلسه اولیا و مربیان به‌زودی برگزار می‌ش
 
 
 /* =========================
-   ذخیره اطلاعات
+ذخیره
 ========================= */
 
 function saveData(){
@@ -303,7 +415,7 @@ JSON.stringify(notifications)
 
 
 /* =========================
-   ورود
+ورود
 ========================= */
 
 function login(type){
@@ -339,13 +451,16 @@ return;
 
 let panel=document.getElementById("panel");
 
+
 if(type==="parent"){
 
 panel.innerHTML=`
 
 <h2>👨‍👩‍👧 پنل والدین</h2>
 
-<p>خوش آمدید <b>${name}</b> 🌷</p>
+<p>
+خوش آمدید <b>${name}</b> 🌷
+</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -376,13 +491,16 @@ panel.innerHTML=`
 
 }
 
+
 if(type==="teacher"){
 
 panel.innerHTML=`
 
 <h2>👩‍🏫 پنل معلم</h2>
 
-<p>خوش آمدید <b>${name}</b> 🌷</p>
+<p>
+خوش آمدید <b>${name}</b> 🌷
+</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -409,13 +527,16 @@ panel.innerHTML=`
 
 }
 
+
 if(type==="admin"){
 
 panel.innerHTML=`
 
 <h2>👩‍💼 پنل مدیریت مدرسه</h2>
 
-<p>خوش آمدید <b>${name}</b> 🌷</p>
+<p>
+خوش آمدید <b>${name}</b> 🌷
+</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -447,25 +568,31 @@ panel.innerHTML=`
 }
 
 document.getElementById("home").style.display="none";
+
 panel.style.display="block";
 
 }
 
 
 /* =========================
-   اعلان‌ها
+اعلان
 ========================= */
 
 function notificationBadge(){
 
-if(notifications.length===0)return "";
+if(notifications.length===0){
+return "";
+}
 
 return `<span class="badge">${notifications.length}</span>`;
 }
 
+
 function messageBadge(){
 
-if(familyMessages.length===0)return "";
+if(familyMessages.length===0){
+return "";
+}
 
 return `<span class="badge">${familyMessages.length}</span>`;
 }
@@ -478,9 +605,11 @@ let html="<h3>🔔 اعلان‌های جدید</h3>";
 if(notifications.length===0){
 
 html+=`
+
 <div class="notice">
 📭 اعلان جدیدی وجود ندارد.
 </div>
+
 `;
 
 }else{
@@ -498,8 +627,8 @@ html+=`
 ${notifications[i].text}
 
 </div>
-`;
 
+`;
 }
 
 html+=`
@@ -530,7 +659,7 @@ showNotifications();
 
 
 /* =========================
-   اطلاعیه‌ها
+اطلاعیه
 ========================= */
 
 function showNotice(){
@@ -550,8 +679,8 @@ html+=`
 ${announcements[i]}
 
 </div>
-`;
 
+`;
 }
 
 document.getElementById("inside").innerHTML=html;
@@ -560,7 +689,7 @@ document.getElementById("inside").innerHTML=html;
 
 
 /* =========================
-   اطلاعات دانش‌آموز
+دانش‌آموز
 ========================= */
 
 function showStudent(){
@@ -604,22 +733,28 @@ ${s.attendance}
 
 <div class="notice">
 
-➗ ریاضی: <b>${s.math}</b>
+➗ ریاضی:
+<b>${s.math}</b>
+
 <br><br>
 
-📚 خواندن و فارسی: <b>${s.reading}</b>
+📚 خواندن و فارسی:
+<b>${s.reading}</b>
+
 <br><br>
 
-🌱 رفتار و مشارکت: <b>${s.behavior}</b>
+🌱 رفتار و مشارکت:
+<b>${s.behavior}</b>
 
 </div>
+
 `;
 
 }
 
 
 /* =========================
-   دانش‌آموزان
+فهرست دانش‌آموزان
 ========================= */
 
 function showStudents(){
@@ -629,6 +764,7 @@ let html=`
 <h3>📚 فهرست دانش‌آموزان</h3>
 
 <p>کلاس سوم الف</p>
+
 `;
 
 for(let i=0;i<students.length;i++){
@@ -656,6 +792,7 @@ html+=`
 </button>
 
 </div>
+
 `;
 
 }
@@ -664,10 +801,6 @@ document.getElementById("inside").innerHTML=html;
 
 }
 
-
-/* =========================
-   پرونده
-========================= */
 
 function studentInfo(index){
 
@@ -721,13 +854,14 @@ ${s.attendance}
 <button onclick="showStudents()">
 بازگشت به فهرست
 </button>
+
 `;
 
 }
 
 
 /* =========================
-   پیام خانواده
+ارتباط خانواده
 ========================= */
 
 function showFamilyMessages(){
@@ -741,6 +875,7 @@ let html=`
 <option value="">
 انتخاب دانش‌آموز
 </option>
+
 `;
 
 for(let i=0;i<students.length;i++){
@@ -750,6 +885,7 @@ html+=`
 <option value="${i}">
 ${students[i].name} - ${students[i].className}
 </option>
+
 `;
 
 }
@@ -766,6 +902,7 @@ placeholder="پیام خود را برای خانواده بنویسید...">
 <button class="green" onclick="sendFamilyMessage()">
 ارسال پیام
 </button>
+
 `;
 
 if(familyMessages.length>0){
@@ -785,6 +922,7 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
+
 `;
 }
 
@@ -806,12 +944,14 @@ document.getElementById("familyMessage").value.trim();
 if(studentIndex===""){
 
 alert("لطفاً دانش‌آموز را انتخاب کنید.");
+
 return;
 }
 
 if(!message){
 
 alert("لطفاً متن پیام را وارد کنید.");
+
 return;
 }
 
@@ -841,7 +981,7 @@ showFamilyMessages();
 
 
 /* =========================
-   پیام والدین
+پیام والدین
 ========================= */
 
 function showParentMessages(){
@@ -855,6 +995,7 @@ document.getElementById("inside").innerHTML=`
 📭 هنوز پیامی از طرف معلم ثبت نشده است.
 
 </div>
+
 `;
 
 return;
@@ -877,8 +1018,8 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-`;
 
+`;
 }
 
 document.getElementById("inside").innerHTML=html;
@@ -887,7 +1028,7 @@ document.getElementById("inside").innerHTML=html;
 
 
 /* =========================
-   اطلاعیه جدید
+اطلاعیه جدید
 ========================= */
 
 function addAnnouncement(){
@@ -904,6 +1045,7 @@ placeholder="متن اطلاعیه را بنویسید...">
 <button class="green" onclick="saveAnnouncement()">
 ثبت اطلاعیه
 </button>
+
 `;
 
 }
@@ -917,6 +1059,7 @@ document.getElementById("announcement").value.trim();
 if(!text){
 
 alert("لطفاً متن اطلاعیه را وارد کنید.");
+
 return;
 }
 
@@ -940,7 +1083,7 @@ showNotice();
 
 
 /* =========================
-   درخواست والدین
+درخواست
 ========================= */
 
 function requestBox(){
@@ -957,7 +1100,9 @@ placeholder="درخواست خود را بنویسید...">
 <button class="green" onclick="saveRequest()">
 ثبت درخواست
 </button>
+
 `;
+
 }
 
 
@@ -969,6 +1114,7 @@ document.getElementById("req").value.trim();
 if(!text){
 
 alert("لطفاً درخواست را بنویسید.");
+
 return;
 }
 
@@ -984,7 +1130,7 @@ document.getElementById("inside").innerHTML="";
 
 
 /* =========================
-   درخواست‌ها
+مشاهده درخواست‌ها
 ========================= */
 
 function showRequests(){
@@ -1000,6 +1146,7 @@ box.innerHTML=`
 هنوز درخواستی ثبت نشده است.
 
 </div>
+
 `;
 
 return;
@@ -1020,6 +1167,7 @@ html+=`
 ${requests[i]}
 
 </div>
+
 `;
 }
 
@@ -1029,7 +1177,7 @@ box.innerHTML=html;
 
 
 /* =========================
-   داشبورد
+داشبورد
 ========================= */
 
 function showDashboard(){
@@ -1038,7 +1186,7 @@ document.getElementById("inside").innerHTML=`
 
 <h3>📊 داشبورد مدیریت مدرسه</h3>
 
-<p style="color:#546e7a">
+<p style="color:#607d8b">
 نمای کلی وضعیت سامانه
 </p>
 
@@ -1082,8 +1230,10 @@ document.getElementById("inside").innerHTML=`
 
 والدین: فعال ✅
 <br>
+
 معلمان: فعال ✅
 <br>
+
 مدیریت: فعال ✅
 
 </div>
@@ -1102,13 +1252,14 @@ ${students.length}
 اطلاعات آموزشی دانش‌آموزان در دسترس است.
 
 </div>
+
 `;
 
 }
 
 
 /* =========================
-   خروج
+خروج
 ========================= */
 
 function backHome(){
@@ -1122,4 +1273,4 @@ document.getElementById("home").style.display="block";
 </script>
 
 </body>
-</html>
+   </html>
