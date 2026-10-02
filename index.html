@@ -95,6 +95,20 @@ border-radius:12px;
 margin-top:10px;
 text-align:right;
 }
+
+.infoBox{
+background:#f5f7fa;
+padding:15px;
+border-radius:14px;
+margin-top:10px;
+text-align:right;
+line-height:2;
+}
+
+.label{
+font-weight:bold;
+color:#1565c0;
+}
 </style>
 </head>
 
@@ -144,19 +158,31 @@ let students=[
 name:"آرین محمدی",
 className:"سوم الف",
 status:"فعال",
-grade:"عالی"
+grade:"عالی",
+attendance:"حاضر",
+math:"عالی",
+reading:"خوب",
+behavior:"بسیار خوب"
 },
 {
 name:"سارا احمدی",
 className:"سوم الف",
 status:"فعال",
-grade:"خوب"
+grade:"خوب",
+attendance:"حاضر",
+math:"خوب",
+reading:"عالی",
+behavior:"خوب"
 },
 {
 name:"پارسا رضایی",
 className:"سوم الف",
 status:"فعال",
-grade:"نیازمند توجه"
+grade:"نیازمند توجه",
+attendance:"حاضر",
+math:"متوسط",
+reading:"خوب",
+behavior:"خوب"
 }
 ];
 
@@ -179,7 +205,7 @@ panel.innerHTML=`
 <p>خوش آمدید ${name} 🌷</p>
 
 <button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
-<button onclick="showStudent()">📚 اطلاعات دانش‌آموز</button>
+<button onclick="showStudent()">📚 اطلاعات آموزشی دانش‌آموز</button>
 <button onclick="showParentMessages()">💬 پیام‌های معلم</button>
 <button onclick="requestBox()">📩 درخواست به مدرسه</button>
 <button class="gray" onclick="backHome()">بازگشت</button>
@@ -195,15 +221,8 @@ panel.innerHTML=`
 <p>خوش آمدید ${name} 🌷</p>
 
 <button onclick="showNotice()">📢 اطلاعیه‌ها</button>
-
-<button onclick="showStudents()">
-📚 دانش‌آموزان
-</button>
-
-<button onclick="showFamilyMessages()">
-👨‍👩‍👧 ارتباط با خانواده
-</button>
-
+<button onclick="showStudents()">📚 دانش‌آموزان</button>
+<button onclick="showFamilyMessages()">👨‍👩‍👧 ارتباط با خانواده</button>
 <button class="gray" onclick="backHome()">بازگشت</button>
 
 <div id="inside"></div>
@@ -254,7 +273,64 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* دانش‌آموزان */
+/* اطلاعات آموزشی دانش‌آموز */
+
+function showStudent(){
+
+let s=students[0];
+
+document.getElementById("inside").innerHTML=`
+
+<h3>📚 پرونده آموزشی دانش‌آموز</h3>
+
+<div class="infoBox">
+
+<div>
+<span class="label">👤 نام دانش‌آموز:</span>
+${s.name}
+</div>
+
+<div>
+<span class="label">🏫 کلاس:</span>
+${s.className}
+</div>
+
+<div>
+<span class="label">✅ وضعیت:</span>
+${s.status}
+</div>
+
+<div>
+<span class="label">📊 ارزیابی کلی:</span>
+${s.grade}
+</div>
+
+<div>
+<span class="label">🕐 وضعیت حضور:</span>
+${s.attendance}
+</div>
+
+</div>
+
+<h3>📖 ارزیابی درسی</h3>
+
+<div class="notice">
+➗ ریاضی: <b>${s.math}</b><br><br>
+📚 خواندن و فارسی: <b>${s.reading}</b><br><br>
+🌱 رفتار و مشارکت: <b>${s.behavior}</b>
+</div>
+
+<div class="notice">
+💡 این اطلاعات در نسخه نمایشی سامانه قابل ویرایش و تکمیل توسط مدرسه است.
+</div>
+
+`;
+
+
+}
+
+
+/* دانش‌آموزان معلم */
 
 function showStudents(){
 
@@ -269,7 +345,6 @@ html+=`
 <div class="student">
 
 <b>${students[i].name}</b><br>
-
 کلاس: ${students[i].className}<br>
 وضعیت: ${students[i].status}<br>
 ارزیابی: ${students[i].grade}
@@ -298,21 +373,28 @@ document.getElementById("inside").innerHTML=`
 
 <h3>📋 پرونده دانش‌آموز</h3>
 
+<div class="infoBox">
+
+<b>👤 نام:</b> ${s.name}<br>
+<b>🏫 کلاس:</b> ${s.className}<br>
+<b>✅ وضعیت:</b> ${s.status}<br>
+<b>📊 ارزیابی کلی:</b> ${s.grade}<br>
+<b>🕐 حضور:</b> ${s.attendance}<br>
+
+</div>
+
 <div class="notice">
 
-<b>نام:</b> ${s.name}<br><br>
-
-<b>کلاس:</b> ${s.className}<br><br>
-
-<b>وضعیت:</b> ${s.status}<br><br>
-
-<b>ارزیابی آموزشی:</b> ${s.grade}
+➗ ریاضی: ${s.math}<br><br>
+📚 خواندن و فارسی: ${s.reading}<br><br>
+🌱 رفتار و مشارکت: ${s.behavior}
 
 </div>
 
 <button onclick="showStudents()">
 بازگشت به فهرست
 </button>
+
 `;
 
 }
@@ -384,7 +466,6 @@ document.getElementById("inside").innerHTML=html;
 function sendFamilyMessage(){
 
 let studentIndex=document.getElementById("familyStudent").value;
-
 let message=document.getElementById("familyMessage").value.trim();
 
 if(studentIndex===""){
@@ -402,11 +483,8 @@ return;
 }
 
 familyMessages.push({
-
 student:students[studentIndex].name,
-
 text:message
-
 });
 
 alert("پیام با موفقیت ثبت شد ✅");
@@ -420,11 +498,9 @@ showFamilyMessages();
 
 function showParentMessages(){
 
-let box=document.getElementById("inside");
-
 if(familyMessages.length===0){
 
-box.innerHTML=`
+document.getElementById("inside").innerHTML=`
 
 <div class="notice">
 📭 هنوز پیامی از طرف معلم ثبت نشده است.
@@ -456,7 +532,7 @@ ${familyMessages[i].text}
 
 }
 
-box.innerHTML=html;
+document.getElementById("inside").innerHTML=html;
 
 }
 
@@ -582,7 +658,7 @@ box.innerHTML=html;
 }
 
 
-/* داشبورد */
+/* داشبورد مدیریت */
 
 function showDashboard(){
 
@@ -601,11 +677,6 @@ ${announcements.length}
 </div>
 
 <div class="notice">
-<b>👥 کاربران سامانه</b><br>
-والدین، معلمان و مدیریت
-</div>
-
-<div class="notice">
 <b>👨‍🎓 دانش‌آموزان ثبت‌شده</b><br>
 ${students.length} نفر
 </div>
@@ -613,6 +684,11 @@ ${students.length} نفر
 <div class="notice">
 <b>💬 پیام‌های معلمان</b><br>
 ${familyMessages.length} پیام
+</div>
+
+<div class="notice">
+<b>👥 کاربران سامانه</b><br>
+والدین، معلمان و مدیریت
 </div>
 
 <div class="notice">
@@ -625,38 +701,11 @@ ${familyMessages.length} پیام
 }
 
 
-/* اطلاعات دانش‌آموز برای والد */
-
-function showStudent(){
-
-document.getElementById("inside").innerHTML=`
-
-<div class="notice">
-
-<b>📚 اطلاعات دانش‌آموز</b><br><br>
-
-نام: آرین محمدی<br><br>
-
-کلاس: سوم الف<br><br>
-
-وضعیت آموزشی: فعال<br><br>
-
-ارزیابی کلی: خوب
-
-</div>
-
-`;
-
-
-}
-
-
 /* بازگشت */
 
 function backHome(){
 
 document.getElementById("panel").style.display="none";
-
 document.getElementById("home").style.display="block";
 
 }
@@ -666,3 +715,4 @@ document.getElementById("home").style.display="block";
 </body>
 </html>
 ```
+  
