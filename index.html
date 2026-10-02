@@ -109,6 +109,45 @@ line-height:2;
 font-weight:bold;
 color:#1565c0;
 }
+
+.dashboard{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.stat{
+background:#f5f7fa;
+padding:18px 10px;
+border-radius:16px;
+box-shadow:0 3px 10px #0001;
+}
+
+.stat .icon{
+font-size:28px;
+}
+
+.stat .number{
+font-size:26px;
+font-weight:bold;
+color:#1565c0;
+margin:8px 0;
+}
+
+.stat .title{
+font-size:14px;
+color:#546e7a;
+}
+
+.status{
+background:#e8f5e9;
+padding:15px;
+border-radius:14px;
+margin-top:15px;
+font-weight:bold;
+color:#2e7d32;
+}
 </style>
 </head>
 
@@ -273,7 +312,7 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* اطلاعات آموزشی دانش‌آموز */
+/* اطلاعات دانش‌آموز */
 
 function showStudent(){
 
@@ -320,12 +359,7 @@ ${s.attendance}
 🌱 رفتار و مشارکت: <b>${s.behavior}</b>
 </div>
 
-<div class="notice">
-💡 این اطلاعات در نسخه نمایشی سامانه قابل ویرایش و تکمیل توسط مدرسه است.
-</div>
-
 `;
-
 
 }
 
@@ -400,7 +434,7 @@ document.getElementById("inside").innerHTML=`
 }
 
 
-/* ارتباط معلم و خانواده */
+/* ارتباط خانواده */
 
 function showFamilyMessages(){
 
@@ -494,7 +528,7 @@ showFamilyMessages();
 }
 
 
-/* نمایش پیام برای والدین */
+/* پیام‌های والدین */
 
 function showParentMessages(){
 
@@ -537,7 +571,7 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* ثبت اطلاعیه */
+/* اطلاعیه جدید */
 
 function addAnnouncement(){
 
@@ -615,7 +649,7 @@ document.getElementById("inside").innerHTML="";
 }
 
 
-/* مشاهده درخواست‌ها */
+/* درخواست‌ها */
 
 function showRequests(){
 
@@ -658,42 +692,67 @@ box.innerHTML=html;
 }
 
 
-/* داشبورد مدیریت */
+/* داشبورد حرفه‌ای مدیریت */
 
 function showDashboard(){
 
 document.getElementById("inside").innerHTML=`
 
-<h3>📊 داشبورد مدیریت</h3>
+<h3>📊 داشبورد مدیریت مدرسه</h3>
 
-<div class="notice">
-<b>📩 تعداد درخواست‌ها</b><br>
-${requests.length}
+<p style="color:#546e7a">
+نمای کلی وضعیت سامانه
+</p>
+
+<div class="dashboard">
+
+<div class="stat">
+<div class="icon">👨‍🎓</div>
+<div class="number">${students.length}</div>
+<div class="title">دانش‌آموز</div>
+</div>
+
+<div class="stat">
+<div class="icon">📢</div>
+<div class="number">${announcements.length}</div>
+<div class="title">اطلاعیه</div>
+</div>
+
+<div class="stat">
+<div class="icon">📩</div>
+<div class="number">${requests.length}</div>
+<div class="title">درخواست</div>
+</div>
+
+<div class="stat">
+<div class="icon">💬</div>
+<div class="number">${familyMessages.length}</div>
+<div class="title">پیام معلمان</div>
+</div>
+
+</div>
+
+<div class="status">
+🟢 سامانه فعال است
 </div>
 
 <div class="notice">
-<b>📢 تعداد اطلاعیه‌ها</b><br>
-${announcements.length}
+
+<b>📌 وضعیت ارتباطات</b><br><br>
+
+والدین: فعال ✅<br>
+معلمان: فعال ✅<br>
+مدیریت: فعال ✅
+
 </div>
 
 <div class="notice">
-<b>👨‍🎓 دانش‌آموزان ثبت‌شده</b><br>
-${students.length} نفر
-</div>
 
-<div class="notice">
-<b>💬 پیام‌های معلمان</b><br>
-${familyMessages.length} پیام
-</div>
+<b>📚 وضعیت آموزشی</b><br><br>
 
-<div class="notice">
-<b>👥 کاربران سامانه</b><br>
-والدین، معلمان و مدیریت
-</div>
+${students.length} دانش‌آموز در سامانه ثبت شده‌اند.<br>
+اطلاعات آموزشی دانش‌آموزان در دسترس است.
 
-<div class="notice">
-<b>✅ وضعیت سامانه</b><br>
-فعال
 </div>
 
 `;
@@ -715,4 +774,3 @@ document.getElementById("home").style.display="block";
 </body>
 </html>
 ```
-  
