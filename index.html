@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -69,6 +70,19 @@ border-radius:12px;
 margin-top:10px;
 text-align:right;
 }
+
+.student{
+background:#e3f2fd;
+padding:14px;
+border-radius:12px;
+margin-top:10px;
+text-align:right;
+}
+
+.student button{
+background:#1565c0;
+font-size:14px;
+}
 </style>
 </head>
 
@@ -113,6 +127,27 @@ let announcements=[
 "جلسه اولیا و مربیان به‌زودی برگزار می‌شود."
 ];
 
+let students=[
+{
+name:"آرین محمدی",
+className:"سوم الف",
+status:"فعال",
+grade:"عالی"
+},
+{
+name:"سارا احمدی",
+className:"سوم الف",
+status:"فعال",
+grade:"خوب"
+},
+{
+name:"پارسا رضایی",
+className:"سوم الف",
+status:"فعال",
+grade:"نیازمند توجه"
+}
+];
+
 function login(type){
 
 let name=prompt("نام کاربری را وارد کنید:");
@@ -142,8 +177,15 @@ panel.innerHTML=`
 <p>خوش آمدید ${name} 🌷</p>
 
 <button onclick="showNotice()">📢 اطلاعیه‌ها</button>
-<button onclick="alert('بخش دانش‌آموزان آماده است ✅')">📚 دانش‌آموزان</button>
-<button onclick="alert('بخش ارتباط با خانواده آماده است ✅')">👨‍👩‍👧 ارتباط با خانواده</button>
+
+<button onclick="showStudents()">
+📚 دانش‌آموزان
+</button>
+
+<button onclick="showFamilyMessages()">
+👨‍👩‍👧 ارتباط با خانواده
+</button>
+
 <button class="gray" onclick="backHome()">بازگشت</button>
 
 <div id="inside"></div>
@@ -190,6 +232,101 @@ document.getElementById("inside").innerHTML=html;
 
 }
 
+function showStudents(){
+
+let html=`
+<h3>📚 فهرست دانش‌آموزان</h3>
+<p>کلاس سوم الف</p>
+`;
+
+for(let i=0;i<students.length;i++){
+
+html+=`
+<div class="student">
+
+<b>${students[i].name}</b><br>
+
+کلاس: ${students[i].className}<br>
+وضعیت: ${students[i].status}<br>
+ارزیابی: ${students[i].grade}
+
+<button onclick="studentInfo(${i})">
+مشاهده پرونده
+</button>
+
+</div>
+`;
+
+}
+
+document.getElementById("inside").innerHTML=html;
+
+}
+
+function studentInfo(index){
+
+let s=students[index];
+
+document.getElementById("inside").innerHTML=`
+
+<h3>📋 پرونده دانش‌آموز</h3>
+
+<div class="notice">
+
+<b>نام:</b> ${s.name}<br><br>
+
+<b>کلاس:</b> ${s.className}<br><br>
+
+<b>وضعیت:</b> ${s.status}<br><br>
+
+<b>ارزیابی آموزشی:</b> ${s.grade}
+
+</div>
+
+<button onclick="showStudents()">
+بازگشت به فهرست
+</button>
+`;
+
+}
+
+function showFamilyMessages(){
+
+document.getElementById("inside").innerHTML=`
+
+<h3>👨‍👩‍👧 ارتباط با خانواده</h3>
+
+<textarea id="familyMessage"
+placeholder="پیام خود را برای خانواده بنویسید..."></textarea>
+
+<button class="green" onclick="sendFamilyMessage()">
+ارسال پیام
+</button>
+
+<div class="notice">
+📌 پیام‌های ارسال‌شده در این نسخه نمایشی در همین سامانه ثبت می‌شوند.
+</div>
+`;
+
+}
+
+function sendFamilyMessage(){
+
+let message=document.getElementById("familyMessage").value.trim();
+
+if(!message){
+
+alert("لطفاً متن پیام را وارد کنید.");
+return;
+
+}
+
+alert("پیام با موفقیت برای خانواده ارسال شد ✅");
+
+document.getElementById("familyMessage").value="";
+
+}
+
 function addAnnouncement(){
 
 document.getElementById("inside").innerHTML=`
@@ -211,8 +348,10 @@ function saveAnnouncement(){
 let text=document.getElementById("announcement").value.trim();
 
 if(!text){
+
 alert("لطفاً متن اطلاعیه را وارد کنید.");
 return;
+
 }
 
 announcements.push(text);
@@ -244,8 +383,10 @@ function saveRequest(){
 let text=document.getElementById("req").value.trim();
 
 if(!text){
+
 alert("لطفاً درخواست را بنویسید.");
 return;
+
 }
 
 requests.push(text);
@@ -269,6 +410,7 @@ box.innerHTML=`
 `;
 
 return;
+
 }
 
 let html="<h3>📩 درخواست‌های والدین</h3>";
@@ -277,7 +419,7 @@ for(let i=0;i<requests.length;i++){
 
 html+=`
 <div class="notice">
-<b>درخواست ${i+1}</b><br>
+<b>درخواست ${i+1}</b><br><br>
 ${requests[i]}
 </div>
 `;
@@ -310,6 +452,11 @@ ${announcements.length}
 </div>
 
 <div class="notice">
+<b>👨‍🎓 دانش‌آموزان ثبت‌شده</b><br>
+${students.length} نفر
+</div>
+
+<div class="notice">
 <b>✅ وضعیت سامانه</b><br>
 فعال
 </div>
@@ -323,7 +470,12 @@ document.getElementById("inside").innerHTML=`
 
 <div class="notice">
 <b>📚 اطلاعات دانش‌آموز</b><br><br>
-این بخش برای نمایش اطلاعات آموزشی دانش‌آموز طراحی شده است.
+
+نام: آرین محمدی<br><br>
+کلاس: سوم الف<br><br>
+وضعیت آموزشی: فعال<br><br>
+ارزیابی کلی: خوب
+
 </div>
 `;
 
@@ -340,3 +492,4 @@ document.getElementById("home").style.display="block";
 
 </body>
 </html>
+```
