@@ -3,45 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>همراه خانواده</title>
+
 <style>
-body{margin:0;font-family:Tahoma,Arial;background:linear-gradient(135deg,#e8f5e9,#e3f2fd);color:#263238}
-.container{max-width:520px;margin:auto;padding:30px 18px;text-align:center}
-h1{color:#1565c0;font-size:32px}
-.subtitle{color:#546e7a;margin-bottom:25px}
-.card,.panel{background:white;padding:22px;margin:15px 0;border-radius:20px;box-shadow:0 5px 18px #0002}
-button{width:100%;padding:14px;margin-top:10px;border:0;border-radius:12px;background:#1976d2;color:white;font-size:16px}
-.green{background:#43a047}.gray{background:#78909c}
-input,textarea{width:90%;padding:12px;margin:8px;border:1px solid #ddd;border-radius:10px;font-family:Tahoma}
-textarea{height:90px}
-.notice{background:#f1f8e9;padding:12px;border-radius:12px;margin-top:10px;text-align:right}
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:linear-gradient(135deg,#e8f5e9,#e3f2fd);
+color:#263238;
+}
+
+.container{
+max-width:520px;
+margin:auto;
+padding:30px 18px;
+text-align:center;
+}
+
+h1{
+color:#1565c0;
+font-size:32px;
+}
+
+.subtitle{
+color:#546e7a;
+margin-bottom:25px;
+}
+
+.card,.panel{
+background:white;
+padding:22px;
+margin:15px 0;
+border-radius:20px;
+box-shadow:0 5px 18px #0002;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:0;
+border-radius:12px;
+background:#1976d2;
+color:white;
+font-size:16px;
+}
+
+.green{
+background:#43a047;
+}
+
+.gray{
+background:#78909c;
+}
+
+input,textarea{
+width:90%;
+padding:12px;
+margin:8px;
+border:1px solid #ddd;
+border-radius:10px;
+font-family:Tahoma;
+}
+
+textarea{
+height:90px;
+}
+
+.notice{
+background:#f1f8e9;
+padding:12px;
+border-radius:12px;
+margin-top:10px;
+text-align:right;
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
 <h1>🌱 همراه خانواده</h1>
-<div class="subtitle">سامانه هوشمند ارتباط مدرسه و خانواده</div>
+
+<div class="subtitle">
+سامانه هوشمند ارتباط مدرسه و خانواده
+</div>
 
 <div id="home">
 
 <div class="card">
 <h2>👨‍👩‍👧 والدین</h2>
 <p>ارتباط با مدرسه و پیگیری امور دانش‌آموز</p>
-<button onclick="login('parent')">ورود والدین</button>
+<button onclick="login('parent')">
+ورود والدین
+</button>
 </div>
 
 <div class="card">
 <h2>👩‍🏫 معلمان</h2>
 <p>مدیریت ارتباط با خانواده‌ها</p>
-<button onclick="login('teacher')">ورود معلمان</button>
+<button onclick="login('teacher')">
+ورود معلمان
+</button>
 </div>
 
 <div class="card">
 <h2>👩‍💼 مدیریت مدرسه</h2>
 <p>مدیریت ارتباطات و درخواست‌ها</p>
-<button onclick="login('admin')">ورود مدیریت</button>
+<button onclick="login('admin')">
+ورود مدیریت
+</button>
 </div>
 
 </div>
@@ -51,101 +124,248 @@ textarea{height:90px}
 </div>
 
 <script>
+
 let requests=[];
 
 function login(type){
+
 let name=prompt("نام کاربری را وارد کنید:");
+
 if(!name)return;
 
 let panel=document.getElementById("panel");
 
 if(type==="parent"){
+
 panel.innerHTML=`
 <h2>👨‍👩‍👧 پنل والدین</h2>
+
 <p>خوش آمدید ${name} 🌷</p>
 
-<button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
-<button onclick="showStudent()">📚 اطلاعات دانش‌آموز</button>
-<button onclick="requestBox()">📩 درخواست به مدرسه</button>
-<button class="gray" onclick="backHome()">بازگشت</button>
+<button onclick="showNotice()">
+📢 اطلاعیه‌های مدرسه
+</button>
+
+<button onclick="showStudent()">
+📚 اطلاعات دانش‌آموز
+</button>
+
+<button onclick="requestBox()">
+📩 درخواست به مدرسه
+</button>
+
+<button class="gray" onclick="backHome()">
+بازگشت
+</button>
+
 <div id="inside"></div>
 `;
 }
 
 if(type==="teacher"){
+
 panel.innerHTML=`
 <h2>👩‍🏫 پنل معلمان</h2>
+
 <p>خوش آمدید ${name} 🌷</p>
-<button onclick="showNotice()">📢 اطلاعیه‌ها</button>
-<button onclick="alert('بخش دانش‌آموزان آماده است.')">📚 دانش‌آموزان</button>
-<button onclick="alert('بخش ارتباط با خانواده آماده است.')">👨‍👩‍👧 ارتباط با خانواده</button>
-<button class="gray" onclick="backHome()">بازگشت</button>
+
+<button onclick="showNotice()">
+📢 اطلاعیه‌ها
+</button>
+
+<button onclick="alert('بخش دانش‌آموزان آماده است ✅')">
+📚 دانش‌آموزان
+</button>
+
+<button onclick="alert('بخش ارتباط با خانواده آماده است ✅')">
+👨‍👩‍👧 ارتباط با خانواده
+</button>
+
+<button class="gray" onclick="backHome()">
+بازگشت
+</button>
+
 <div id="inside"></div>
 `;
 }
 
 if(type==="admin"){
+
 panel.innerHTML=`
 <h2>👩‍💼 پنل مدیریت</h2>
+
 <p>خوش آمدید ${name} 🌷</p>
-<button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
-<button onclick="showRequests()">📩 مشاهده درخواست‌های والدین</button>
-<button onclick="alert('📊 داشبورد مدیریت - تعداد درخواست‌ها: '+requests.length)">📊 داشبورد مدیریت</button>\n\n📩 تعداد درخواست‌ها: '+requests.length+'\n📢 اطلاعیه‌های فعال: 1\n✅ وضعیت سامانه: فعال')">📊 داشبورد مدیریت</button>
-<button class="gray" onclick="backHome()">بازگشت</button>
+
+<button onclick="showNotice()">
+📢 اطلاعیه‌های مدرسه
+</button>
+
+<button onclick="showRequests()">
+📩 مشاهده درخواست‌های والدین
+</button>
+
+<button onclick="showDashboard()">
+📊 داشبورد مدیریت
+</button>
+
+<button class="gray" onclick="backHome()">
+بازگشت
+</button>
+
 <div id="inside"></div>
 `;
 }
 
 document.getElementById("home").style.display="none";
 panel.style.display="block";
+
 }
 
 function requestBox(){
+
 document.getElementById("inside").innerHTML=`
+
 <h3>📩 ثبت درخواست</h3>
-<textarea id="req" placeholder="درخواست خود را بنویسید..."></textarea>
-<button class="green" onclick="saveRequest()">ثبت درخواست</button>
+
+<textarea id="req"
+placeholder="درخواست خود را بنویسید...">
+</textarea>
+
+<button class="green" onclick="saveRequest()">
+ثبت درخواست
+</button>
+
 `;
 }
 
 function saveRequest(){
+
 let text=document.getElementById("req").value.trim();
-if(!text){alert("لطفاً درخواست را بنویسید.");return;}
+
+if(!text){
+alert("لطفاً درخواست را بنویسید.");
+return;
+}
+
 requests.push(text);
+
 alert("درخواست شما با موفقیت ثبت شد ✅");
+
 document.getElementById("inside").innerHTML="";
+
 }
 
 function showRequests(){
+
 let box=document.getElementById("inside");
+
 if(requests.length===0){
-box.innerHTML="<div class='notice'>هنوز درخواستی ثبت نشده است.</div>";
+
+box.innerHTML=`
+<div class="notice">
+هنوز درخواستی ثبت نشده است.
+</div>
+`;
+
 return;
 }
-box.innerHTML="<h3>📩 درخواست‌های والدین</h3>"+
-requests.map((r,i)=>`<div class="notice"><b>درخواست ${i+1}:</b><br>${r}</div>`).join("");
+
+let html="<h3>📩 درخواست‌های والدین</h3>";
+
+for(let i=0;i<requests.length;i++){
+
+html+=`
+<div class="notice">
+<b>درخواست ${i+1}</b>
+<br>
+${requests[i]}
+</div>
+`;
+
+}
+
+box.innerHTML=html;
+
+}
+
+function showDashboard(){
+
+document.getElementById("inside").innerHTML=`
+
+<h3>📊 داشبورد مدیریت</h3>
+
+<div class="notice">
+<b>📩 تعداد درخواست‌ها</b>
+<br>
+${requests.length}
+</div>
+
+<div class="notice">
+<b>📢 اطلاعیه‌های فعال</b>
+<br>
+1
+</div>
+
+<div class="notice">
+<b>👨‍👩‍👧 کاربران سامانه</b>
+<br>
+والدین، معلمان و مدیریت
+</div>
+
+<div class="notice">
+<b>✅ وضعیت سامانه</b>
+<br>
+فعال
+</div>
+
+`;
+
 }
 
 function showNotice(){
+
 document.getElementById("inside").innerHTML=`
+
 <div class="notice">
-<b>📢 اطلاعیه مدرسه</b><br>
+
+<b>📢 اطلاعیه مدرسه</b>
+
+<br><br>
+
 جلسه اولیا و مربیان به‌زودی برگزار می‌شود.
-</div>`;
+
+</div>
+
+`;
+
 }
 
 function showStudent(){
+
 document.getElementById("inside").innerHTML=`
+
 <div class="notice">
-<b>📚 اطلاعات دانش‌آموز</b><br>
+
+<b>📚 اطلاعات دانش‌آموز</b>
+
+<br><br>
+
 این بخش برای نمایش اطلاعات آموزشی دانش‌آموز طراحی شده است.
-</div>`;
+
+</div>
+
+`;
+
 }
 
 function backHome(){
+
 document.getElementById("panel").style.display="none";
+
 document.getElementById("home").style.display="block";
+
 }
+
 </script>
 
 </body>
