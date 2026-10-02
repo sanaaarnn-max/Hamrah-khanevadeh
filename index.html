@@ -53,14 +53,23 @@ font-size:16px;
 .green{background:#43a047}
 .gray{background:#78909c}
 
-textarea{
+textarea,select{
 width:90%;
 padding:12px;
 margin:8px;
 border:1px solid #ddd;
 border-radius:10px;
 font-family:Tahoma;
+box-sizing:border-box;
+}
+
+textarea{
 height:90px;
+}
+
+select{
+height:45px;
+background:white;
 }
 
 .notice{
@@ -79,9 +88,12 @@ margin-top:10px;
 text-align:right;
 }
 
-.student button{
-background:#1565c0;
-font-size:14px;
+.message{
+background:#fff8e1;
+padding:14px;
+border-radius:12px;
+margin-top:10px;
+text-align:right;
 }
 </style>
 </head>
@@ -148,6 +160,11 @@ grade:"نیازمند توجه"
 }
 ];
 
+let familyMessages=[];
+
+
+/* ورود */
+
 function login(type){
 
 let name=prompt("نام کاربری را وارد کنید:");
@@ -163,6 +180,7 @@ panel.innerHTML=`
 
 <button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
 <button onclick="showStudent()">📚 اطلاعات دانش‌آموز</button>
+<button onclick="showParentMessages()">💬 پیام‌های معلم</button>
 <button onclick="requestBox()">📩 درخواست به مدرسه</button>
 <button class="gray" onclick="backHome()">بازگشت</button>
 
@@ -213,6 +231,9 @@ panel.style.display="block";
 
 }
 
+
+/* اطلاعیه */
+
 function showNotice(){
 
 let html="<h3>📢 اطلاعیه‌های مدرسه</h3>";
@@ -231,6 +252,9 @@ ${announcements[i]}
 document.getElementById("inside").innerHTML=html;
 
 }
+
+
+/* دانش‌آموزان */
 
 function showStudents(){
 
@@ -263,6 +287,9 @@ document.getElementById("inside").innerHTML=html;
 
 }
 
+
+/* پرونده دانش‌آموز */
+
 function studentInfo(index){
 
 let s=students[index];
@@ -290,11 +317,33 @@ document.getElementById("inside").innerHTML=`
 
 }
 
+
+/* ارتباط معلم و خانواده */
+
 function showFamilyMessages(){
 
-document.getElementById("inside").innerHTML=`
+let html=`
 
 <h3>👨‍👩‍👧 ارتباط با خانواده</h3>
+
+<select id="familyStudent">
+
+<option value="">انتخاب دانش‌آموز</option>
+`;
+
+for(let i=0;i<students.length;i++){
+
+html+=`
+<option value="${i}">
+${students[i].name} - ${students[i].className}
+</option>
+`;
+
+}
+
+html+=`
+
+</select>
 
 <textarea id="familyMessage"
 placeholder="پیام خود را برای خانواده بنویسید..."></textarea>
@@ -303,16 +352,47 @@ placeholder="پیام خود را برای خانواده بنویسید..."></t
 ارسال پیام
 </button>
 
-<div class="notice">
-📌 پیام‌های ارسال‌شده در این نسخه نمایشی در همین سامانه ثبت می‌شوند.
+`;
+
+if(familyMessages.length>0){
+
+html+=`<h3>📨 پیام‌های ثبت‌شده</h3>`;
+
+for(let i=0;i<familyMessages.length;i++){
+
+html+=`
+<div class="message">
+
+<b>${familyMessages[i].student}</b><br><br>
+
+${familyMessages[i].text}
+
 </div>
 `;
 
 }
 
+}
+
+document.getElementById("inside").innerHTML=html;
+
+}
+
+
+/* ارسال پیام */
+
 function sendFamilyMessage(){
 
+let studentIndex=document.getElementById("familyStudent").value;
+
 let message=document.getElementById("familyMessage").value.trim();
+
+if(studentIndex===""){
+
+alert("لطفاً دانش‌آموز را انتخاب کنید.");
+return;
+
+}
 
 if(!message){
 
@@ -321,11 +401,67 @@ return;
 
 }
 
-alert("پیام با موفقیت برای خانواده ارسال شد ✅");
+familyMessages.push({
 
-document.getElementById("familyMessage").value="";
+student:students[studentIndex].name,
+
+text:message
+
+});
+
+alert("پیام با موفقیت ثبت شد ✅");
+
+showFamilyMessages();
 
 }
+
+
+/* نمایش پیام برای والدین */
+
+function showParentMessages(){
+
+let box=document.getElementById("inside");
+
+if(familyMessages.length===0){
+
+box.innerHTML=`
+
+<div class="notice">
+📭 هنوز پیامی از طرف معلم ثبت نشده است.
+</div>
+
+`;
+
+return;
+
+}
+
+let html="<h3>💬 پیام‌های معلم</h3>";
+
+for(let i=0;i<familyMessages.length;i++){
+
+html+=`
+
+<div class="message">
+
+<b>👩‍🏫 پیام برای ${familyMessages[i].student}</b>
+
+<br><br>
+
+${familyMessages[i].text}
+
+</div>
+
+`;
+
+}
+
+box.innerHTML=html;
+
+}
+
+
+/* ثبت اطلاعیه */
 
 function addAnnouncement(){
 
@@ -342,6 +478,7 @@ placeholder="متن اطلاعیه را بنویسید..."></textarea>
 `;
 
 }
+
 
 function saveAnnouncement(){
 
@@ -362,6 +499,9 @@ showNotice();
 
 }
 
+
+/* درخواست والدین */
+
 function requestBox(){
 
 document.getElementById("inside").innerHTML=`
@@ -377,6 +517,7 @@ placeholder="درخواست خود را بنویسید..."></textarea>
 `;
 
 }
+
 
 function saveRequest(){
 
@@ -397,6 +538,9 @@ document.getElementById("inside").innerHTML="";
 
 }
 
+
+/* مشاهده درخواست‌ها */
+
 function showRequests(){
 
 let box=document.getElementById("inside");
@@ -404,9 +548,11 @@ let box=document.getElementById("inside");
 if(requests.length===0){
 
 box.innerHTML=`
+
 <div class="notice">
 هنوز درخواستی ثبت نشده است.
 </div>
+
 `;
 
 return;
@@ -418,10 +564,15 @@ let html="<h3>📩 درخواست‌های والدین</h3>";
 for(let i=0;i<requests.length;i++){
 
 html+=`
+
 <div class="notice">
+
 <b>درخواست ${i+1}</b><br><br>
+
 ${requests[i]}
+
 </div>
+
 `;
 
 }
@@ -429,6 +580,9 @@ ${requests[i]}
 box.innerHTML=html;
 
 }
+
+
+/* داشبورد */
 
 function showDashboard(){
 
@@ -457,33 +611,52 @@ ${students.length} نفر
 </div>
 
 <div class="notice">
+<b>💬 پیام‌های معلمان</b><br>
+${familyMessages.length} پیام
+</div>
+
+<div class="notice">
 <b>✅ وضعیت سامانه</b><br>
 فعال
 </div>
+
 `;
 
 }
+
+
+/* اطلاعات دانش‌آموز برای والد */
 
 function showStudent(){
 
 document.getElementById("inside").innerHTML=`
 
 <div class="notice">
+
 <b>📚 اطلاعات دانش‌آموز</b><br><br>
 
 نام: آرین محمدی<br><br>
+
 کلاس: سوم الف<br><br>
+
 وضعیت آموزشی: فعال<br><br>
+
 ارزیابی کلی: خوب
 
 </div>
+
 `;
 
+
 }
+
+
+/* بازگشت */
 
 function backHome(){
 
 document.getElementById("panel").style.display="none";
+
 document.getElementById("home").style.display="block";
 
 }
