@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -21,15 +20,8 @@ padding:30px 18px;
 text-align:center;
 }
 
-h1{
-color:#1565c0;
-font-size:32px;
-}
-
-.subtitle{
-color:#546e7a;
-margin-bottom:25px;
-}
+h1{color:#1565c0;font-size:32px}
+.subtitle{color:#546e7a;margin-bottom:25px}
 
 .card,.panel{
 background:white;
@@ -52,6 +44,7 @@ font-size:16px;
 
 .green{background:#43a047}
 .gray{background:#78909c}
+.red{background:#e53935}
 
 textarea,select{
 width:90%;
@@ -63,14 +56,8 @@ font-family:Tahoma;
 box-sizing:border-box;
 }
 
-textarea{
-height:90px;
-}
-
-select{
-height:45px;
-background:white;
-}
+textarea{height:90px}
+select{height:45px;background:white}
 
 .notice{
 background:#f1f8e9;
@@ -124,21 +111,14 @@ border-radius:16px;
 box-shadow:0 3px 10px #0001;
 }
 
-.stat .icon{
-font-size:28px;
-}
-
+.stat .icon{font-size:28px}
 .stat .number{
 font-size:26px;
 font-weight:bold;
 color:#1565c0;
 margin:8px 0;
 }
-
-.stat .title{
-font-size:14px;
-color:#546e7a;
-}
+.stat .title{font-size:14px;color:#546e7a}
 
 .status{
 background:#e8f5e9;
@@ -147,6 +127,25 @@ border-radius:14px;
 margin-top:15px;
 font-weight:bold;
 color:#2e7d32;
+}
+
+.notification{
+background:#fff3e0;
+border-right:5px solid #fb8c00;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+text-align:right;
+}
+
+.badge{
+display:inline-block;
+background:#e53935;
+color:white;
+border-radius:20px;
+padding:4px 9px;
+font-size:12px;
+margin-right:5px;
 }
 </style>
 </head>
@@ -227,6 +226,13 @@ behavior:"خوب"
 
 let familyMessages=[];
 
+let notifications=[
+{
+type:"اطلاعیه",
+text:"جلسه اولیا و مربیان به‌زودی برگزار می‌شود."
+}
+];
+
 
 /* ورود */
 
@@ -243,9 +249,10 @@ panel.innerHTML=`
 <h2>👨‍👩‍👧 پنل والدین</h2>
 <p>خوش آمدید ${name} 🌷</p>
 
+<button onclick="showNotifications()">🔔 اعلان‌ها ${notificationBadge()}</button>
 <button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
 <button onclick="showStudent()">📚 اطلاعات آموزشی دانش‌آموز</button>
-<button onclick="showParentMessages()">💬 پیام‌های معلم</button>
+<button onclick="showParentMessages()">💬 پیام‌های معلم ${messageBadge()}</button>
 <button onclick="requestBox()">📩 درخواست به مدرسه</button>
 <button class="gray" onclick="backHome()">بازگشت</button>
 
@@ -259,6 +266,7 @@ panel.innerHTML=`
 <h2>👩‍🏫 پنل معلمان</h2>
 <p>خوش آمدید ${name} 🌷</p>
 
+<button onclick="showNotifications()">🔔 اعلان‌ها ${notificationBadge()}</button>
 <button onclick="showNotice()">📢 اطلاعیه‌ها</button>
 <button onclick="showStudents()">📚 دانش‌آموزان</button>
 <button onclick="showFamilyMessages()">👨‍👩‍👧 ارتباط با خانواده</button>
@@ -274,6 +282,7 @@ panel.innerHTML=`
 <h2>👩‍💼 پنل مدیریت</h2>
 <p>خوش آمدید ${name} 🌷</p>
 
+<button onclick="showNotifications()">🔔 اعلان‌ها ${notificationBadge()}</button>
 <button onclick="showNotice()">📢 اطلاعیه‌های مدرسه</button>
 <button onclick="showRequests()">📩 مشاهده درخواست‌های والدین</button>
 <button onclick="showDashboard()">📊 داشبورد مدیریت</button>
@@ -286,6 +295,82 @@ panel.innerHTML=`
 
 document.getElementById("home").style.display="none";
 panel.style.display="block";
+
+}
+
+
+/* تعداد اعلان */
+
+function notificationBadge(){
+
+if(notifications.length===0)return "";
+
+return `<span class="badge">${notifications.length}</span>`;
+}
+
+
+/* تعداد پیام */
+
+function messageBadge(){
+
+if(familyMessages.length===0)return "";
+
+return `<span class="badge">${familyMessages.length}</span>`;
+}
+
+
+/* اعلان‌ها */
+
+function showNotifications(){
+
+let html="<h3>🔔 اعلان‌های جدید</h3>";
+
+if(notifications.length===0){
+
+html+=`
+<div class="notice">
+📭 اعلان جدیدی وجود ندارد.
+</div>
+`;
+
+}else{
+
+for(let i=0;i<notifications.length;i++){
+
+html+=`
+<div class="notification">
+
+<b>🔔 ${notifications[i].type}</b><br><br>
+
+${notifications[i].text}
+
+</div>
+`;
+
+}
+
+}
+
+html+=`
+<button class="gray" onclick="clearNotifications()">
+خواندم ✓
+</button>
+`;
+
+document.getElementById("inside").innerHTML=html;
+
+}
+
+
+/* خواندن اعلان‌ها */
+
+function clearNotifications(){
+
+notifications=[];
+
+alert("اعلان‌ها خوانده شدند ✅");
+
+showNotifications();
 
 }
 
@@ -324,30 +409,11 @@ document.getElementById("inside").innerHTML=`
 
 <div class="infoBox">
 
-<div>
-<span class="label">👤 نام دانش‌آموز:</span>
-${s.name}
-</div>
-
-<div>
-<span class="label">🏫 کلاس:</span>
-${s.className}
-</div>
-
-<div>
-<span class="label">✅ وضعیت:</span>
-${s.status}
-</div>
-
-<div>
-<span class="label">📊 ارزیابی کلی:</span>
-${s.grade}
-</div>
-
-<div>
-<span class="label">🕐 وضعیت حضور:</span>
-${s.attendance}
-</div>
+<div><span class="label">👤 نام:</span> ${s.name}</div>
+<div><span class="label">🏫 کلاس:</span> ${s.className}</div>
+<div><span class="label">✅ وضعیت:</span> ${s.status}</div>
+<div><span class="label">📊 ارزیابی:</span> ${s.grade}</div>
+<div><span class="label">🕐 حضور:</span> ${s.attendance}</div>
 
 </div>
 
@@ -358,13 +424,12 @@ ${s.attendance}
 📚 خواندن و فارسی: <b>${s.reading}</b><br><br>
 🌱 رفتار و مشارکت: <b>${s.behavior}</b>
 </div>
-
 `;
 
 }
 
 
-/* دانش‌آموزان معلم */
+/* دانش‌آموزان */
 
 function showStudents(){
 
@@ -397,7 +462,7 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* پرونده دانش‌آموز */
+/* پرونده */
 
 function studentInfo(index){
 
@@ -412,7 +477,7 @@ document.getElementById("inside").innerHTML=`
 <b>👤 نام:</b> ${s.name}<br>
 <b>🏫 کلاس:</b> ${s.className}<br>
 <b>✅ وضعیت:</b> ${s.status}<br>
-<b>📊 ارزیابی کلی:</b> ${s.grade}<br>
+<b>📊 ارزیابی:</b> ${s.grade}<br>
 <b>🕐 حضور:</b> ${s.attendance}<br>
 
 </div>
@@ -443,7 +508,6 @@ let html=`
 <h3>👨‍👩‍👧 ارتباط با خانواده</h3>
 
 <select id="familyStudent">
-
 <option value="">انتخاب دانش‌آموز</option>
 `;
 
@@ -467,7 +531,6 @@ placeholder="پیام خود را برای خانواده بنویسید..."></t
 <button class="green" onclick="sendFamilyMessage()">
 ارسال پیام
 </button>
-
 `;
 
 if(familyMessages.length>0){
@@ -478,11 +541,8 @@ for(let i=0;i<familyMessages.length;i++){
 
 html+=`
 <div class="message">
-
 <b>${familyMessages[i].student}</b><br><br>
-
 ${familyMessages[i].text}
-
 </div>
 `;
 
@@ -503,22 +563,23 @@ let studentIndex=document.getElementById("familyStudent").value;
 let message=document.getElementById("familyMessage").value.trim();
 
 if(studentIndex===""){
-
 alert("لطفاً دانش‌آموز را انتخاب کنید.");
 return;
-
 }
 
 if(!message){
-
 alert("لطفاً متن پیام را وارد کنید.");
 return;
-
 }
 
 familyMessages.push({
 student:students[studentIndex].name,
 text:message
+});
+
+notifications.push({
+type:"پیام جدید",
+text:"یک پیام جدید از طرف معلم ثبت شد."
 });
 
 alert("پیام با موفقیت ثبت شد ✅");
@@ -528,7 +589,7 @@ showFamilyMessages();
 }
 
 
-/* پیام‌های والدین */
+/* پیام والدین */
 
 function showParentMessages(){
 
@@ -561,7 +622,6 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-
 `;
 
 }
@@ -595,13 +655,16 @@ function saveAnnouncement(){
 let text=document.getElementById("announcement").value.trim();
 
 if(!text){
-
 alert("لطفاً متن اطلاعیه را وارد کنید.");
 return;
-
 }
 
 announcements.push(text);
+
+notifications.push({
+type:"اطلاعیه جدید",
+text:text
+});
 
 alert("اطلاعیه با موفقیت ثبت شد ✅");
 
@@ -634,10 +697,8 @@ function saveRequest(){
 let text=document.getElementById("req").value.trim();
 
 if(!text){
-
 alert("لطفاً درخواست را بنویسید.");
 return;
-
 }
 
 requests.push(text);
@@ -658,15 +719,12 @@ let box=document.getElementById("inside");
 if(requests.length===0){
 
 box.innerHTML=`
-
 <div class="notice">
 هنوز درخواستی ثبت نشده است.
 </div>
-
 `;
 
 return;
-
 }
 
 let html="<h3>📩 درخواست‌های والدین</h3>";
@@ -674,7 +732,6 @@ let html="<h3>📩 درخواست‌های والدین</h3>";
 for(let i=0;i<requests.length;i++){
 
 html+=`
-
 <div class="notice">
 
 <b>درخواست ${i+1}</b><br><br>
@@ -682,7 +739,6 @@ html+=`
 ${requests[i]}
 
 </div>
-
 `;
 
 }
@@ -692,7 +748,7 @@ box.innerHTML=html;
 }
 
 
-/* داشبورد حرفه‌ای مدیریت */
+/* داشبورد */
 
 function showDashboard(){
 
@@ -746,15 +802,6 @@ document.getElementById("inside").innerHTML=`
 
 </div>
 
-<div class="notice">
-
-<b>📚 وضعیت آموزشی</b><br><br>
-
-${students.length} دانش‌آموز در سامانه ثبت شده‌اند.<br>
-اطلاعات آموزشی دانش‌آموزان در دسترس است.
-
-</div>
-
 `;
 
 }
@@ -773,4 +820,3 @@ document.getElementById("home").style.display="block";
 
 </body>
 </html>
-```
