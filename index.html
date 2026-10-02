@@ -3,20 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>همراه خانواده</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
 font-family:Tahoma,Arial,sans-serif;
-background:
-linear-gradient(135deg,#e3f2fd,#f1f8e9);
+background:linear-gradient(135deg,#e3f2fd,#f1f8e9);
 color:#263238;
 min-height:100vh;
 }
@@ -24,16 +19,17 @@ min-height:100vh;
 .container{
 max-width:520px;
 margin:auto;
-padding:22px 16px 40px;
+padding:20px 16px 40px;
 }
 
 .header{
 background:linear-gradient(135deg,#1565c0,#1976d2);
 color:white;
-padding:28px 20px;
+padding:27px 20px;
 border-radius:25px;
 box-shadow:0 8px 25px #0002;
 margin-bottom:20px;
+text-align:center;
 }
 
 .header h1{
@@ -44,7 +40,6 @@ font-size:30px;
 .header p{
 margin:10px 0 0;
 font-size:14px;
-opacity:.9;
 }
 
 .card,.panel{
@@ -55,26 +50,20 @@ border-radius:20px;
 box-shadow:0 5px 20px #0001;
 }
 
-.card{
-transition:.2s;
-}
+.card{text-align:center}
 
-.card:active{
-transform:scale(.98);
+.role-icon{
+font-size:38px;
 }
 
 .card h2{
-margin:5px 0 8px;
+margin:8px 0;
 }
 
 .card p{
 color:#607d8b;
 font-size:14px;
-}
-
-.role-icon{
-font-size:38px;
-margin-bottom:5px;
+line-height:1.8;
 }
 
 button{
@@ -88,26 +77,16 @@ color:white;
 font-size:16px;
 font-family:Tahoma;
 cursor:pointer;
-box-shadow:0 3px 8px #0002;
 }
 
-button:active{
-transform:scale(.98);
-}
+.green{background:#43a047}
+.gray{background:#78909c}
+.red{background:#e53935}
 
-.green{
-background:#43a047;
-}
-
-.gray{
-background:#78909c;
-}
-
-textarea,
-select{
+input,textarea,select{
 width:100%;
 padding:13px;
-margin:8px 0;
+margin:7px 0;
 border:1px solid #dce3e8;
 border-radius:12px;
 font-family:Tahoma;
@@ -120,8 +99,13 @@ height:95px;
 resize:none;
 }
 
-select{
-height:48px;
+select{height:48px}
+
+.loginBox{
+background:#f7f9fb;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
 }
 
 .notice{
@@ -176,12 +160,11 @@ margin-top:15px;
 background:#f7f9fb;
 padding:18px 10px;
 border-radius:17px;
+text-align:center;
 box-shadow:0 3px 12px #0001;
 }
 
-.stat .icon{
-font-size:28px;
-}
+.stat .icon{font-size:28px}
 
 .stat .number{
 font-size:27px;
@@ -202,6 +185,7 @@ border-radius:14px;
 margin-top:15px;
 font-weight:bold;
 color:#2e7d32;
+text-align:center;
 }
 
 .notification{
@@ -224,13 +208,18 @@ font-size:11px;
 margin-right:5px;
 }
 
+.small{
+font-size:12px;
+color:#78909c;
+line-height:1.8;
+}
+
 .footer{
 text-align:center;
 color:#78909c;
 font-size:12px;
 margin-top:25px;
 }
-
 </style>
 </head>
 
@@ -239,73 +228,36 @@ margin-top:25px;
 <div class="container">
 
 <div class="header">
-
 <h1>🌱 همراه خانواده</h1>
-
-<p>
-سامانه هوشمند ارتباط مدرسه و خانواده
-</p>
-
+<p>سامانه هوشمند ارتباط مدرسه و خانواده</p>
 </div>
-
 
 <div id="home">
 
 <div class="card">
-
 <div class="role-icon">👨‍👩‍👧</div>
-
 <h2>والدین</h2>
-
-<p>
-پیگیری وضعیت آموزشی و ارتباط مستقیم با مدرسه
-</p>
-
-<button onclick="login('parent')">
-ورود والدین
-</button>
-
+<p>پیگیری وضعیت آموزشی و ارتباط با مدرسه</p>
+<button onclick="login('parent')">ورود والدین</button>
 </div>
 
-
 <div class="card">
-
 <div class="role-icon">👩‍🏫</div>
-
 <h2>معلمان</h2>
-
-<p>
-مدیریت دانش‌آموزان و ارتباط با خانواده‌ها
-</p>
-
-<button onclick="login('teacher')">
-ورود معلمان
-</button>
-
+<p>مدیریت دانش‌آموزان و ارتباط با خانواده‌ها</p>
+<button onclick="login('teacher')">ورود معلمان</button>
 </div>
-
 
 <div class="card">
-
 <div class="role-icon">👩‍💼</div>
-
 <h2>مدیریت مدرسه</h2>
-
-<p>
-مدیریت ارتباطات، اطلاعیه‌ها و درخواست‌ها
-</p>
-
-<button onclick="login('admin')">
-ورود مدیریت
-</button>
-
+<p>مدیریت اطلاعات، اطلاعیه‌ها و درخواست‌ها</p>
+<button onclick="login('admin')">ورود مدیریت</button>
 </div>
 
 </div>
-
 
 <div id="panel" class="panel" style="display:none"></div>
-
 
 <div class="footer">
 نسخه نمایشی سامانه «همراه خانواده»
@@ -313,11 +265,34 @@ margin-top:25px;
 
 </div>
 
-
 <script>
 
 /* =========================
-اطلاعات
+اطلاعات ورود
+========================= */
+
+const accounts = {
+
+admin:{
+username:"admin",
+password:"1234"
+},
+
+teacher:{
+username:"teacher",
+password:"5678"
+},
+
+parent:{
+username:"parent",
+password:"2468"
+}
+
+};
+
+
+/* =========================
+اطلاعات ذخیره شده
 ========================= */
 
 let requests =
@@ -333,9 +308,11 @@ JSON.parse(localStorage.getItem("school_students")) || [
 
 {
 name:"آرین محمدی",
+grade:"سوم",
 className:"سوم الف",
+teacher:"خانم احمدی",
 status:"فعال",
-grade:"عالی",
+evaluation:"عالی",
 attendance:"حاضر",
 math:"عالی",
 reading:"خوب",
@@ -344,9 +321,11 @@ behavior:"بسیار خوب"
 
 {
 name:"سارا احمدی",
+grade:"سوم",
 className:"سوم الف",
+teacher:"خانم احمدی",
 status:"فعال",
-grade:"خوب",
+evaluation:"خوب",
 attendance:"حاضر",
 math:"خوب",
 reading:"عالی",
@@ -355,9 +334,11 @@ behavior:"خوب"
 
 {
 name:"پارسا رضایی",
+grade:"سوم",
 className:"سوم الف",
+teacher:"خانم احمدی",
 status:"فعال",
-grade:"نیازمند توجه",
+evaluation:"نیازمند توجه",
 attendance:"حاضر",
 math:"متوسط",
 reading:"خوب",
@@ -438,19 +419,81 @@ roleName="مدیریت مدرسه";
 roleIcon="👩‍💼";
 }
 
-let name=prompt(
-"ورود به سامانه همراه خانواده\n\n"+
-roleIcon+" "+roleName+
-"\n\nنام کاربری را وارد کنید:"
-);
-
-if(!name || name.trim()===""){
-alert("لطفاً نام کاربری را وارد کنید.");
-return;
-}
-
 let panel=document.getElementById("panel");
 
+panel.innerHTML=`
+
+<div class="loginBox">
+
+<h2>${roleIcon} ورود ${roleName}</h2>
+
+<p class="small">
+نام کاربری و رمز عبور خود را وارد کنید.
+</p>
+
+<input
+id="loginUsername"
+placeholder="نام کاربری"
+>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="رمز عبور"
+>
+
+<button onclick="checkLogin('${type}')">
+ورود به سامانه
+</button>
+
+<button class="gray" onclick="backHome()">
+بازگشت
+</button>
+
+</div>
+`;
+
+document.getElementById("home").style.display="none";
+panel.style.display="block";
+
+}
+
+
+/* =========================
+بررسی رمز
+========================= */
+
+function checkLogin(type){
+
+let username=
+document.getElementById("loginUsername").value.trim();
+
+let password=
+document.getElementById("loginPassword").value.trim();
+
+if(
+username===accounts[type].username &&
+password===accounts[type].password
+){
+
+openPanel(type,username);
+
+}else{
+
+alert("نام کاربری یا رمز عبور اشتباه است ❌");
+
+}
+
+}
+
+
+/* =========================
+پنل‌ها
+========================= */
+
+function openPanel(type,name){
+
+let panel=document.getElementById("panel");
 
 if(type==="parent"){
 
@@ -458,9 +501,7 @@ panel.innerHTML=`
 
 <h2>👨‍👩‍👧 پنل والدین</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -483,7 +524,7 @@ panel.innerHTML=`
 </button>
 
 <button class="gray" onclick="backHome()">
-🚪 خروج از حساب
+🚪 خروج
 </button>
 
 <div id="inside"></div>
@@ -498,9 +539,7 @@ panel.innerHTML=`
 
 <h2>👩‍🏫 پنل معلم</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -519,7 +558,7 @@ panel.innerHTML=`
 </button>
 
 <button class="gray" onclick="backHome()">
-🚪 خروج از حساب
+🚪 خروج
 </button>
 
 <div id="inside"></div>
@@ -534,9 +573,7 @@ panel.innerHTML=`
 
 <h2>👩‍💼 پنل مدیریت مدرسه</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -558,8 +595,16 @@ panel.innerHTML=`
 📝 ثبت اطلاعیه جدید
 </button>
 
+<button onclick="addStudent()">
+➕ افزودن دانش‌آموز
+</button>
+
+<button onclick="manageStudents()">
+👨‍🎓 مدیریت دانش‌آموزان
+</button>
+
 <button class="gray" onclick="backHome()">
-🚪 خروج از حساب
+🚪 خروج
 </button>
 
 <div id="inside"></div>
@@ -567,22 +612,16 @@ panel.innerHTML=`
 
 }
 
-document.getElementById("home").style.display="none";
-
-panel.style.display="block";
-
 }
 
 
 /* =========================
-اعلان
+اعلان‌ها
 ========================= */
 
 function notificationBadge(){
 
-if(notifications.length===0){
-return "";
-}
+if(notifications.length===0)return "";
 
 return `<span class="badge">${notifications.length}</span>`;
 }
@@ -590,9 +629,7 @@ return `<span class="badge">${notifications.length}</span>`;
 
 function messageBadge(){
 
-if(familyMessages.length===0){
-return "";
-}
+if(familyMessages.length===0)return "";
 
 return `<span class="badge">${familyMessages.length}</span>`;
 }
@@ -605,11 +642,9 @@ let html="<h3>🔔 اعلان‌های جدید</h3>";
 if(notifications.length===0){
 
 html+=`
-
 <div class="notice">
 📭 اعلان جدیدی وجود ندارد.
 </div>
-
 `;
 
 }else{
@@ -627,8 +662,8 @@ html+=`
 ${notifications[i].text}
 
 </div>
-
 `;
+
 }
 
 html+=`
@@ -689,7 +724,7 @@ document.getElementById("inside").innerHTML=html;
 
 
 /* =========================
-دانش‌آموز
+اطلاعات دانش‌آموز
 ========================= */
 
 function showStudent(){
@@ -698,7 +733,7 @@ let s=students[0];
 
 document.getElementById("inside").innerHTML=`
 
-<h3>📚 پرونده آموزشی دانش‌آموز</h3>
+<h3>📚 پرونده آموزشی</h3>
 
 <div class="infoBox">
 
@@ -708,18 +743,23 @@ ${s.name}
 </div>
 
 <div>
-<span class="label">🏫 کلاس:</span>
+<span class="label">🏫 پایه:</span>
+${s.grade}
+</div>
+
+<div>
+<span class="label">📚 کلاس:</span>
 ${s.className}
 </div>
 
 <div>
-<span class="label">✅ وضعیت:</span>
-${s.status}
+<span class="label">👩‍🏫 معلم:</span>
+${s.teacher}
 </div>
 
 <div>
 <span class="label">📊 ارزیابی:</span>
-${s.grade}
+${s.evaluation}
 </div>
 
 <div>
@@ -747,7 +787,6 @@ ${s.attendance}
 <b>${s.behavior}</b>
 
 </div>
-
 `;
 
 }
@@ -763,8 +802,6 @@ let html=`
 
 <h3>📚 فهرست دانش‌آموزان</h3>
 
-<p>کلاس سوم الف</p>
-
 `;
 
 for(let i=0;i<students.length;i++){
@@ -773,19 +810,23 @@ html+=`
 
 <div class="student">
 
-<b>${students[i].name}</b>
+<b>👤 ${students[i].name}</b>
 
 <br>
 
-کلاس: ${students[i].className}
+🏫 پایه: ${students[i].grade}
 
 <br>
 
-وضعیت: ${students[i].status}
+📚 کلاس: ${students[i].className}
 
 <br>
 
-ارزیابی: ${students[i].grade}
+👩‍🏫 معلم: ${students[i].teacher}
+
+<br>
+
+📊 ارزیابی: ${students[i].evaluation}
 
 <button onclick="studentInfo(${i})">
 مشاهده پرونده
@@ -817,18 +858,23 @@ ${s.name}
 
 <br>
 
-<b>🏫 کلاس:</b>
+<b>🏫 پایه:</b>
+${s.grade}
+
+<br>
+
+<b>📚 کلاس:</b>
 ${s.className}
 
 <br>
 
-<b>✅ وضعیت:</b>
-${s.status}
+<b>👩‍🏫 معلم:</b>
+${s.teacher}
 
 <br>
 
 <b>📊 ارزیابی:</b>
-${s.grade}
+${s.evaluation}
 
 <br>
 
@@ -854,8 +900,214 @@ ${s.attendance}
 <button onclick="showStudents()">
 بازگشت به فهرست
 </button>
+`;
+
+}
+
+
+/* =========================
+افزودن دانش‌آموز
+========================= */
+
+function addStudent(){
+
+document.getElementById("inside").innerHTML=`
+
+<h3>➕ افزودن دانش‌آموز</h3>
+
+<input
+id="newName"
+placeholder="نام و نام خانوادگی دانش‌آموز"
+>
+
+<select id="newGrade">
+
+<option value="">
+انتخاب پایه
+</option>
+
+<option>اول</option>
+<option>دوم</option>
+<option>سوم</option>
+<option>چهارم</option>
+<option>پنجم</option>
+<option>ششم</option>
+
+</select>
+
+<input
+id="newClass"
+placeholder="مثلاً سوم الف"
+>
+
+<input
+id="newTeacher"
+placeholder="نام معلم"
+>
+
+<select id="newStatus">
+
+<option>فعال</option>
+<option>نیازمند توجه</option>
+</select>
+
+<select id="newEvaluation">
+
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیازمند توجه</option>
+
+</select>
+
+<button class="green" onclick="saveStudent()">
+ثبت دانش‌آموز
+</button>
+
+<button class="gray" onclick="manageStudents()">
+مدیریت دانش‌آموزان
+</button>
 
 `;
+
+}
+
+
+function saveStudent(){
+
+let name=
+document.getElementById("newName").value.trim();
+
+let grade=
+document.getElementById("newGrade").value;
+
+let className=
+document.getElementById("newClass").value.trim();
+
+let teacher=
+document.getElementById("newTeacher").value.trim();
+
+let status=
+document.getElementById("newStatus").value;
+
+let evaluation=
+document.getElementById("newEvaluation").value;
+
+if(!name || !grade || !className || !teacher){
+
+alert("لطفاً همه اطلاعات را وارد کنید.");
+
+return;
+}
+
+students.push({
+
+name:name,
+grade:grade,
+className:className,
+teacher:teacher,
+status:status,
+evaluation:evaluation,
+attendance:"حاضر",
+math:"ثبت نشده",
+reading:"ثبت نشده",
+behavior:"ثبت نشده"
+
+});
+
+saveData();
+
+alert("دانش‌آموز با موفقیت اضافه شد ✅");
+
+manageStudents();
+
+}
+
+
+/* =========================
+مدیریت دانش‌آموزان
+========================= */
+
+function manageStudents(){
+
+let html=`
+
+<h3>👨‍🎓 مدیریت دانش‌آموزان</h3>
+
+<p class="small">
+تعداد کل دانش‌آموزان: ${students.length}
+</p>
+`;
+
+if(students.length===0){
+
+html+=`
+
+<div class="notice">
+هنوز دانش‌آموزی ثبت نشده است.
+</div>
+
+`;
+
+}else{
+
+for(let i=0;i<students.length;i++){
+
+html+=`
+
+<div class="student">
+
+<b>${students[i].name}</b>
+
+<br>
+
+پایه: ${students[i].grade}
+
+<br>
+
+کلاس: ${students[i].className}
+
+<br>
+
+معلم: ${students[i].teacher}
+
+<button class="red" onclick="deleteStudent(${i})">
+حذف دانش‌آموز
+</button>
+
+</div>
+
+`;
+
+}
+
+}
+
+html+=`
+
+<button class="green" onclick="addStudent()">
+➕ افزودن دانش‌آموز جدید
+</button>
+`;
+
+document.getElementById("inside").innerHTML=html;
+
+}
+
+
+function deleteStudent(index){
+
+let ok=confirm(
+"آیا از حذف این دانش‌آموز مطمئن هستید؟"
+);
+
+if(!ok)return;
+
+students.splice(index,1);
+
+saveData();
+
+manageStudents();
 
 }
 
@@ -875,7 +1127,6 @@ let html=`
 <option value="">
 انتخاب دانش‌آموز
 </option>
-
 `;
 
 for(let i=0;i<students.length;i++){
@@ -885,7 +1136,6 @@ html+=`
 <option value="${i}">
 ${students[i].name} - ${students[i].className}
 </option>
-
 `;
 
 }
@@ -902,7 +1152,6 @@ placeholder="پیام خود را برای خانواده بنویسید...">
 <button class="green" onclick="sendFamilyMessage()">
 ارسال پیام
 </button>
-
 `;
 
 if(familyMessages.length>0){
@@ -922,7 +1171,6 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-
 `;
 }
 
@@ -958,7 +1206,6 @@ return;
 familyMessages.push({
 
 student:students[studentIndex].name,
-
 text:message
 
 });
@@ -966,7 +1213,6 @@ text:message
 notifications.push({
 
 type:"پیام جدید",
-
 text:"یک پیام جدید از طرف معلم ثبت شد."
 
 });
@@ -995,7 +1241,6 @@ document.getElementById("inside").innerHTML=`
 📭 هنوز پیامی از طرف معلم ثبت نشده است.
 
 </div>
-
 `;
 
 return;
@@ -1018,8 +1263,8 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-
 `;
+
 }
 
 document.getElementById("inside").innerHTML=html;
@@ -1045,7 +1290,6 @@ placeholder="متن اطلاعیه را بنویسید...">
 <button class="green" onclick="saveAnnouncement()">
 ثبت اطلاعیه
 </button>
-
 `;
 
 }
@@ -1068,7 +1312,6 @@ announcements.push(text);
 notifications.push({
 
 type:"اطلاعیه جدید",
-
 text:text
 
 });
@@ -1100,9 +1343,7 @@ placeholder="درخواست خود را بنویسید...">
 <button class="green" onclick="saveRequest()">
 ثبت درخواست
 </button>
-
 `;
-
 }
 
 
@@ -1130,7 +1371,7 @@ document.getElementById("inside").innerHTML="";
 
 
 /* =========================
-مشاهده درخواست‌ها
+درخواست‌ها
 ========================= */
 
 function showRequests(){
@@ -1142,11 +1383,8 @@ if(requests.length===0){
 box.innerHTML=`
 
 <div class="notice">
-
 هنوز درخواستی ثبت نشده است.
-
 </div>
-
 `;
 
 return;
@@ -1167,7 +1405,6 @@ html+=`
 ${requests[i]}
 
 </div>
-
 `;
 }
 
@@ -1186,7 +1423,7 @@ document.getElementById("inside").innerHTML=`
 
 <h3>📊 داشبورد مدیریت مدرسه</h3>
 
-<p style="color:#607d8b">
+<p class="small">
 نمای کلی وضعیت سامانه
 </p>
 
@@ -1230,10 +1467,8 @@ document.getElementById("inside").innerHTML=`
 
 والدین: فعال ✅
 <br>
-
 معلمان: فعال ✅
 <br>
-
 مدیریت: فعال ✅
 
 </div>
@@ -1247,12 +1482,7 @@ document.getElementById("inside").innerHTML=`
 ${students.length}
 دانش‌آموز در سامانه ثبت شده‌اند.
 
-<br>
-
-اطلاعات آموزشی دانش‌آموزان در دسترس است.
-
 </div>
-
 `;
 
 }
