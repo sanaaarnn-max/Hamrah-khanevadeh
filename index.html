@@ -22,16 +22,8 @@ padding:25px 18px;
 text-align:center;
 }
 
-h1{
-color:#1565c0;
-font-size:32px;
-margin-bottom:8px;
-}
-
-.subtitle{
-color:#546e7a;
-margin-bottom:25px;
-}
+h1{color:#1565c0;font-size:32px}
+.subtitle{color:#546e7a;margin-bottom:25px}
 
 .card,.panel{
 background:white;
@@ -39,10 +31,6 @@ padding:22px;
 margin:15px 0;
 border-radius:20px;
 box-shadow:0 5px 18px #0002;
-}
-
-.card h2{
-margin-top:5px;
 }
 
 button{
@@ -54,16 +42,10 @@ border-radius:12px;
 background:#1976d2;
 color:white;
 font-size:16px;
-cursor:pointer;
-}
-
-button:active{
-transform:scale(.98);
 }
 
 .green{background:#43a047}
 .gray{background:#78909c}
-.red{background:#e53935}
 
 textarea,select{
 width:90%;
@@ -139,9 +121,7 @@ border-radius:16px;
 box-shadow:0 3px 10px #0001;
 }
 
-.stat .icon{
-font-size:28px;
-}
+.stat .icon{font-size:28px}
 
 .stat .number{
 font-size:26px;
@@ -201,25 +181,19 @@ margin-right:5px;
 <div class="card">
 <h2>👨‍👩‍👧 والدین</h2>
 <p>ارتباط با مدرسه و پیگیری امور دانش‌آموز</p>
-<button onclick="login('parent')">
-ورود والدین
-</button>
+<button onclick="login('parent')">ورود والدین</button>
 </div>
 
 <div class="card">
 <h2>👩‍🏫 معلمان</h2>
 <p>مدیریت ارتباط با خانواده‌ها</p>
-<button onclick="login('teacher')">
-ورود معلمان
-</button>
+<button onclick="login('teacher')">ورود معلمان</button>
 </div>
 
 <div class="card">
 <h2>👩‍💼 مدیریت مدرسه</h2>
 <p>مدیریت ارتباطات و درخواست‌ها</p>
-<button onclick="login('admin')">
-ورود مدیریت
-</button>
+<button onclick="login('admin')">ورود مدیریت</button>
 </div>
 
 </div>
@@ -230,15 +204,21 @@ margin-right:5px;
 
 <script>
 
-/* اطلاعات سامانه */
+/* =========================
+   اطلاعات اولیه
+========================= */
 
-let requests=[];
+let requests =
+JSON.parse(localStorage.getItem("school_requests")) || [];
 
-let announcements=[
+let announcements =
+JSON.parse(localStorage.getItem("school_announcements")) || [
 "جلسه اولیا و مربیان به‌زودی برگزار می‌شود."
 ];
 
-let students=[
+let students =
+JSON.parse(localStorage.getItem("school_students")) || [
+
 {
 name:"آرین محمدی",
 className:"سوم الف",
@@ -249,6 +229,7 @@ math:"عالی",
 reading:"خوب",
 behavior:"بسیار خوب"
 },
+
 {
 name:"سارا احمدی",
 className:"سوم الف",
@@ -259,6 +240,7 @@ math:"خوب",
 reading:"عالی",
 behavior:"خوب"
 },
+
 {
 name:"پارسا رضایی",
 className:"سوم الف",
@@ -269,19 +251,60 @@ math:"متوسط",
 reading:"خوب",
 behavior:"خوب"
 }
+
 ];
 
-let familyMessages=[];
+let familyMessages =
+JSON.parse(localStorage.getItem("school_messages")) || [];
 
-let notifications=[
+let notifications =
+JSON.parse(localStorage.getItem("school_notifications")) || [
+
 {
 type:"اطلاعیه",
 text:"جلسه اولیا و مربیان به‌زودی برگزار می‌شود."
 }
+
 ];
 
 
-/* ورود */
+/* =========================
+   ذخیره اطلاعات
+========================= */
+
+function saveData(){
+
+localStorage.setItem(
+"school_requests",
+JSON.stringify(requests)
+);
+
+localStorage.setItem(
+"school_announcements",
+JSON.stringify(announcements)
+);
+
+localStorage.setItem(
+"school_students",
+JSON.stringify(students)
+);
+
+localStorage.setItem(
+"school_messages",
+JSON.stringify(familyMessages)
+);
+
+localStorage.setItem(
+"school_notifications",
+JSON.stringify(notifications)
+);
+
+}
+
+
+/* =========================
+   ورود
+========================= */
 
 function login(type){
 
@@ -322,9 +345,7 @@ panel.innerHTML=`
 
 <h2>👨‍👩‍👧 پنل والدین</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید <b>${name}</b> 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -352,8 +373,8 @@ panel.innerHTML=`
 
 <div id="inside"></div>
 `;
-}
 
+}
 
 if(type==="teacher"){
 
@@ -361,9 +382,7 @@ panel.innerHTML=`
 
 <h2>👩‍🏫 پنل معلم</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید <b>${name}</b> 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -387,8 +406,8 @@ panel.innerHTML=`
 
 <div id="inside"></div>
 `;
-}
 
+}
 
 if(type==="admin"){
 
@@ -396,9 +415,7 @@ panel.innerHTML=`
 
 <h2>👩‍💼 پنل مدیریت مدرسه</h2>
 
-<p>
-خوش آمدید <b>${name}</b> 🌷
-</p>
+<p>خوش آمدید <b>${name}</b> 🌷</p>
 
 <button onclick="showNotifications()">
 🔔 اعلان‌ها ${notificationBadge()}
@@ -426,6 +443,7 @@ panel.innerHTML=`
 
 <div id="inside"></div>
 `;
+
 }
 
 document.getElementById("home").style.display="none";
@@ -434,31 +452,24 @@ panel.style.display="block";
 }
 
 
-/* تعداد اعلان */
+/* =========================
+   اعلان‌ها
+========================= */
 
 function notificationBadge(){
 
-if(notifications.length===0){
-return "";
-}
+if(notifications.length===0)return "";
 
 return `<span class="badge">${notifications.length}</span>`;
 }
 
-
-/* تعداد پیام */
-
 function messageBadge(){
 
-if(familyMessages.length===0){
-return "";
-}
+if(familyMessages.length===0)return "";
 
 return `<span class="badge">${familyMessages.length}</span>`;
 }
 
-
-/* اعلان‌ها */
 
 function showNotifications(){
 
@@ -467,11 +478,9 @@ let html="<h3>🔔 اعلان‌های جدید</h3>";
 if(notifications.length===0){
 
 html+=`
-
 <div class="notice">
 📭 اعلان جدیدی وجود ندارد.
 </div>
-
 `;
 
 }else{
@@ -489,7 +498,6 @@ html+=`
 ${notifications[i].text}
 
 </div>
-
 `;
 
 }
@@ -499,8 +507,8 @@ html+=`
 <button class="gray" onclick="clearNotifications()">
 خواندم ✓
 </button>
-
 `;
+
 }
 
 document.getElementById("inside").innerHTML=html;
@@ -508,11 +516,11 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* خواندن اعلان‌ها */
-
 function clearNotifications(){
 
 notifications=[];
+
+saveData();
 
 alert("اعلان‌ها خوانده شدند ✅");
 
@@ -521,7 +529,9 @@ showNotifications();
 }
 
 
-/* اطلاعیه‌ها */
+/* =========================
+   اطلاعیه‌ها
+========================= */
 
 function showNotice(){
 
@@ -540,7 +550,6 @@ html+=`
 ${announcements[i]}
 
 </div>
-
 `;
 
 }
@@ -550,7 +559,9 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* اطلاعات دانش‌آموز */
+/* =========================
+   اطلاعات دانش‌آموز
+========================= */
 
 function showStudent(){
 
@@ -607,7 +618,9 @@ ${s.attendance}
 }
 
 
-/* فهرست دانش‌آموزان */
+/* =========================
+   دانش‌آموزان
+========================= */
 
 function showStudents(){
 
@@ -616,7 +629,6 @@ let html=`
 <h3>📚 فهرست دانش‌آموزان</h3>
 
 <p>کلاس سوم الف</p>
-
 `;
 
 for(let i=0;i<students.length;i++){
@@ -626,12 +638,15 @@ html+=`
 <div class="student">
 
 <b>${students[i].name}</b>
+
 <br>
 
 کلاس: ${students[i].className}
+
 <br>
 
 وضعیت: ${students[i].status}
+
 <br>
 
 ارزیابی: ${students[i].grade}
@@ -641,7 +656,6 @@ html+=`
 </button>
 
 </div>
-
 `;
 
 }
@@ -651,7 +665,9 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* پرونده دانش‌آموز */
+/* =========================
+   پرونده
+========================= */
 
 function studentInfo(index){
 
@@ -690,31 +706,29 @@ ${s.attendance}
 
 <div class="notice">
 
-➗ ریاضی:
-${s.math}
+➗ ریاضی: ${s.math}
 
 <br><br>
 
-📚 خواندن و فارسی:
-${s.reading}
+📚 خواندن و فارسی: ${s.reading}
 
 <br><br>
 
-🌱 رفتار و مشارکت:
-${s.behavior}
+🌱 رفتار و مشارکت: ${s.behavior}
 
 </div>
 
 <button onclick="showStudents()">
 بازگشت به فهرست
 </button>
-
 `;
 
 }
 
 
-/* ارتباط با خانواده */
+/* =========================
+   پیام خانواده
+========================= */
 
 function showFamilyMessages(){
 
@@ -736,7 +750,6 @@ html+=`
 <option value="${i}">
 ${students[i].name} - ${students[i].className}
 </option>
-
 `;
 
 }
@@ -753,7 +766,6 @@ placeholder="پیام خود را برای خانواده بنویسید...">
 <button class="green" onclick="sendFamilyMessage()">
 ارسال پیام
 </button>
-
 `;
 
 if(familyMessages.length>0){
@@ -773,9 +785,7 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-
 `;
-
 }
 
 }
@@ -784,8 +794,6 @@ document.getElementById("inside").innerHTML=html;
 
 }
 
-
-/* ارسال پیام */
 
 function sendFamilyMessage(){
 
@@ -798,14 +806,12 @@ document.getElementById("familyMessage").value.trim();
 if(studentIndex===""){
 
 alert("لطفاً دانش‌آموز را انتخاب کنید.");
-
 return;
 }
 
 if(!message){
 
 alert("لطفاً متن پیام را وارد کنید.");
-
 return;
 }
 
@@ -825,6 +831,8 @@ text:"یک پیام جدید از طرف معلم ثبت شد."
 
 });
 
+saveData();
+
 alert("پیام با موفقیت ثبت شد ✅");
 
 showFamilyMessages();
@@ -832,7 +840,9 @@ showFamilyMessages();
 }
 
 
-/* پیام‌های والدین */
+/* =========================
+   پیام والدین
+========================= */
 
 function showParentMessages(){
 
@@ -845,7 +855,6 @@ document.getElementById("inside").innerHTML=`
 📭 هنوز پیامی از طرف معلم ثبت نشده است.
 
 </div>
-
 `;
 
 return;
@@ -868,7 +877,6 @@ html+=`
 ${familyMessages[i].text}
 
 </div>
-
 `;
 
 }
@@ -878,7 +886,9 @@ document.getElementById("inside").innerHTML=html;
 }
 
 
-/* ثبت اطلاعیه */
+/* =========================
+   اطلاعیه جدید
+========================= */
 
 function addAnnouncement(){
 
@@ -894,13 +904,10 @@ placeholder="متن اطلاعیه را بنویسید...">
 <button class="green" onclick="saveAnnouncement()">
 ثبت اطلاعیه
 </button>
-
 `;
 
 }
 
-
-/* ذخیره اطلاعیه */
 
 function saveAnnouncement(){
 
@@ -910,7 +917,6 @@ document.getElementById("announcement").value.trim();
 if(!text){
 
 alert("لطفاً متن اطلاعیه را وارد کنید.");
-
 return;
 }
 
@@ -924,6 +930,8 @@ text:text
 
 });
 
+saveData();
+
 alert("اطلاعیه با موفقیت ثبت شد ✅");
 
 showNotice();
@@ -931,7 +939,9 @@ showNotice();
 }
 
 
-/* درخواست مدرسه */
+/* =========================
+   درخواست والدین
+========================= */
 
 function requestBox(){
 
@@ -947,13 +957,9 @@ placeholder="درخواست خود را بنویسید...">
 <button class="green" onclick="saveRequest()">
 ثبت درخواست
 </button>
-
 `;
-
 }
 
-
-/* ذخیره درخواست */
 
 function saveRequest(){
 
@@ -963,11 +969,12 @@ document.getElementById("req").value.trim();
 if(!text){
 
 alert("لطفاً درخواست را بنویسید.");
-
 return;
 }
 
 requests.push(text);
+
+saveData();
 
 alert("درخواست شما با موفقیت ثبت شد ✅");
 
@@ -976,7 +983,9 @@ document.getElementById("inside").innerHTML="";
 }
 
 
-/* مشاهده درخواست‌ها */
+/* =========================
+   درخواست‌ها
+========================= */
 
 function showRequests(){
 
@@ -991,7 +1000,6 @@ box.innerHTML=`
 هنوز درخواستی ثبت نشده است.
 
 </div>
-
 `;
 
 return;
@@ -1012,9 +1020,7 @@ html+=`
 ${requests[i]}
 
 </div>
-
 `;
-
 }
 
 box.innerHTML=html;
@@ -1022,7 +1028,9 @@ box.innerHTML=html;
 }
 
 
-/* داشبورد مدیریت */
+/* =========================
+   داشبورد
+========================= */
 
 function showDashboard(){
 
@@ -1094,13 +1102,14 @@ ${students.length}
 اطلاعات آموزشی دانش‌آموزان در دسترس است.
 
 </div>
-
 `;
 
 }
 
 
-/* خروج */
+/* =========================
+   خروج
+========================= */
 
 function backHome(){
 
