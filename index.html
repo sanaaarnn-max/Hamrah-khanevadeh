@@ -129,5 +129,20 @@ document.querySelectorAll("button")[2].onclick=function(){
     alert("خوش آمدید 👩‍💼\nمدیریت درخواست‌ها و ارتباطات مدرسه اینجا نمایش داده می‌شود.");
   }
 };
+</script><script>
+document.querySelectorAll("button")[0].onclick=function(){
+let name=prompt("نام کاربری والدین را وارد کنید:");
+if(name){
+document.body.innerHTML=`
+<div style="direction:rtl;text-align:center;padding:30px;font-family:Tahoma">
+<h1>👨‍👩‍👧 پنل والدین</h1>
+<h3>خوش آمدید ${name} 🌷</h3>
+<button>📢 اطلاعیه‌های مدرسه</button>
+<button>📚 برنامه کلاسی</button>
+<button>📝 تکالیف دانش‌آموز</button>
+<button>📩 درخواست به مدرسه</button>
+</div>`;
+}
+};
 </script></body>
 </html>
