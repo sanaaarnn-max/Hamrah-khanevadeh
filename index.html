@@ -7,57 +7,86 @@
 
 <style>
 body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  background:linear-gradient(135deg,#e8f5e9,#e3f2fd);
-  text-align:center;
-  color:#263238;
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:linear-gradient(135deg,#e8f5e9,#e3f2fd);
+    text-align:center;
+    color:#263238;
 }
 
 .container{
-  max-width:500px;
-  margin:auto;
-  padding:35px 20px;
+    max-width:500px;
+    margin:auto;
+    padding:35px 20px;
 }
 
 h1{
-  color:#1565c0;
-  margin-bottom:8px;
+    color:#1565c0;
+    margin-bottom:8px;
+    font-size:34px;
 }
 
 .subtitle{
-  color:#546e7a;
-  margin-bottom:30px;
+    color:#546e7a;
+    margin-bottom:30px;
+    font-size:18px;
 }
 
 .card{
-  background:white;
-  padding:22px;
-  margin:15px 0;
-  border-radius:18px;
-  box-shadow:0 5px 18px #00000018;
+    background:white;
+    padding:22px;
+    margin:15px 0;
+    border-radius:22px;
+    box-shadow:0 5px 18px #00000018;
+}
+
+.card h2{
+    margin-top:0;
+    font-size:25px;
+}
+
+.card p{
+    font-size:17px;
+    line-height:2;
 }
 
 button{
-  width:100%;
-  padding:15px;
-  margin-top:10px;
-  border:0;
-  border-radius:12px;
-  background:#1976d2;
-  color:white;
-  font-size:17px;
-  cursor:pointer;
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:0;
+    border-radius:12px;
+    background:#1976d2;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
 }
 
 button:hover{
-  background:#0d47a1;
+    background:#0d47a1;
 }
 
 .footer{
-  margin-top:30px;
-  color:#78909c;
-  font-size:13px;
+    margin-top:30px;
+    color:#78909c;
+    font-size:13px;
+}
+
+.panel{
+    display:none;
+    background:white;
+    padding:25px;
+    margin-top:20px;
+    border-radius:20px;
+    box-shadow:0 5px 18px #00000018;
+}
+
+.panel button{
+    background:#43a047;
+}
+
+.back{
+    background:#78909c !important;
 }
 </style>
 </head>
@@ -66,83 +95,149 @@ button:hover{
 
 <div class="container">
 
-  <h1>🌱 همراه خانواده</h1>
+<h1>🌱 همراه خانواده</h1>
 
-  <div class="subtitle">
-    سامانه هوشمند ارتباط مدرسه و خانواده
-  </div>
-
-  <div class="card">
-    <h2>👨‍👩‍👧 والدین</h2>
-    <p>ارتباط آسان با مدرسه و پیگیری امور دانش‌آموز</p>
-    <button onclick="alert('بخش والدین به‌زودی فعال می‌شود')">
-      ورود والدین
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>👩‍🏫 معلمان</h2>
-    <p>مدیریت ارتباط با خانواده و امور دانش‌آموزان</p>
-    <button onclick="alert('بخش معلمان به‌زودی فعال می‌شود')">
-      ورود معلمان
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>👩‍💼 مدیریت مدرسه</h2>
-    <p>مدیریت هوشمند ارتباطات و درخواست‌ها</p>
-    <button onclick="alert('بخش مدیریت به‌زودی فعال می‌شود')">
-      ورود مدیریت
-    </button>
-  </div>
-<div class="card">
-  <h2>📩 درخواست به مدرسه</h2>
-  <p>ارسال درخواست یا پیام برای مدیریت مدرسه</p>
-  <button onclick="let m=prompt('درخواست خود را بنویسید:'); if(m) alert('درخواست شما با موفقیت ثبت شد ✅');">
-    ثبت درخواست
-  </button>
+<div class="subtitle">
+سامانه هوشمند ارتباط مدرسه و خانواده
 </div>
-  <div class="footer">
-    نسخه نمایشی سامانه همراه خانواده
-  </div>
+
+<div class="card">
+<h2>👨‍👩‍👧 والدین</h2>
+<p>ارتباط آسان با مدرسه و پیگیری امور دانش‌آموز</p>
+<button onclick="login('والدین')">ورود والدین</button>
+</div>
+
+<div class="card">
+<h2>👩‍🏫 معلمان</h2>
+<p>مدیریت ارتباط با خانواده و امور دانش‌آموزان</p>
+<button onclick="login('معلمان')">ورود معلمان</button>
+</div>
+
+<div class="card">
+<h2>👩‍💼 مدیریت مدرسه</h2>
+<p>مدیریت هوشمند ارتباطات و درخواست‌ها</p>
+<button onclick="login('مدیریت')">ورود مدیریت</button>
+</div>
+
+<div id="panel" class="panel"></div>
+
+<div class="footer">
+نسخه نمایشی سامانه همراه خانواده
+</div>
 
 </div>
 
 <script>
-document.querySelectorAll("button")[0].onclick=function(){
-  let name=prompt("نام کاربری والدین را وارد کنید:");
-  if(name){
-    alert("خوش آمدید 🌷\nدرخواست‌ها و اطلاعات دانش‌آموز اینجا نمایش داده می‌شود.");
-  }
-};
-</script><script>
-document.querySelectorAll("button")[1].onclick=function(){
-  let name=prompt("نام کاربری معلم را وارد کنید:");
-  if(name){
-    alert("خوش آمدید 👩‍🏫\nمدیریت کلاس و ارتباط با خانواده اینجا نمایش داده می‌شود.");
-  }
-};
 
-document.querySelectorAll("button")[2].onclick=function(){
-  let name=prompt("نام کاربری مدیریت را وارد کنید:");
-  if(name){
-    alert("خوش آمدید 👩‍💼\nمدیریت درخواست‌ها و ارتباطات مدرسه اینجا نمایش داده می‌شود.");
-  }
-};
-</script><script>
-document.querySelectorAll("button")[0].onclick=function(){
-let name=prompt("نام کاربری والدین را وارد کنید:");
-if(name){
-document.body.innerHTML=`
-<div style="direction:rtl;text-align:center;padding:30px;font-family:Tahoma">
-<h1>👨‍👩‍👧 پنل والدین</h1>
-<h3>خوش آمدید ${name} 🌷</h3>
-<button>📢 اطلاعیه‌های مدرسه</button>
-<button>📚 برنامه کلاسی</button>
-<button>📝 تکالیف دانش‌آموز</button>
-<button>📩 درخواست به مدرسه</button>
-</div>`;
+function login(type){
+
+    let name = prompt("لطفاً نام کاربری را وارد کنید:");
+
+    if(!name){
+        return;
+    }
+
+    let panel = document.getElementById("panel");
+
+    if(type === "والدین"){
+
+        panel.innerHTML = `
+        <h2>👨‍👩‍👧 پنل والدین</h2>
+        <h3>خوش آمدید ${name} 🌷</h3>
+
+        <button onclick="alert('📚 اطلاعات و وضعیت دانش‌آموز نمایش داده می‌شود.')">
+        📚 اطلاعات دانش‌آموز
+        </button>
+
+        <button onclick="alert('📢 اطلاعیه‌های مدرسه نمایش داده می‌شود.')">
+        📢 اطلاعیه‌های مدرسه
+        </button>
+
+        <button onclick="alert('💬 ارتباط با معلم فعال می‌شود.')">
+        💬 ارتباط با معلم
+        </button>
+
+        <button onclick="alert('📅 برنامه و رویدادهای مدرسه نمایش داده می‌شود.')">
+        📅 برنامه مدرسه
+        </button>
+
+        <button class="back" onclick="closePanel()">
+        بازگشت
+        </button>
+        `;
+
+    }
+
+    else if(type === "معلمان"){
+
+        panel.innerHTML = `
+        <h2>👩‍🏫 پنل معلمان</h2>
+        <h3>خوش آمدید ${name} 🌷</h3>
+
+        <button onclick="alert('👨‍👩‍👧 اطلاعات خانواده‌ها نمایش داده می‌شود.')">
+        👨‍👩‍👧 خانواده دانش‌آموزان
+        </button>
+
+        <button onclick="alert('📚 اطلاعات دانش‌آموزان نمایش داده می‌شود.')">
+        📚 دانش‌آموزان
+        </button>
+
+        <button onclick="alert('📢 اطلاعیه جدید ارسال می‌شود.')">
+        📢 ارسال اطلاعیه
+        </button>
+
+        <button onclick="alert('💬 پیام جدید ارسال می‌شود.')">
+        💬 ارسال پیام
+        </button>
+
+        <button class="back" onclick="closePanel()">
+        بازگشت
+        </button>
+        `;
+
+    }
+
+    else if(type === "مدیریت"){
+
+        panel.innerHTML = `
+        <h2>👩‍💼 پنل مدیریت مدرسه</h2>
+        <h3>خوش آمدید ${name} 🌷</h3>
+
+        <button onclick="alert('📊 داشبورد مدرسه نمایش داده می‌شود.')">
+        📊 داشبورد مدرسه
+        </button>
+
+        <button onclick="alert('👨‍👩‍👧 مدیریت والدین و خانواده‌ها فعال می‌شود.')">
+        👨‍👩‍👧 مدیریت خانواده‌ها
+        </button>
+
+        <button onclick="alert('👩‍🏫 مدیریت معلمان فعال می‌شود.')">
+        👩‍🏫 مدیریت معلمان
+        </button>
+
+        <button onclick="alert('📢 مدیریت اطلاعیه‌ها فعال می‌شود.')">
+        📢 اطلاعیه‌ها
+        </button>
+
+        <button onclick="alert('📈 گزارش‌های مدرسه نمایش داده می‌شود.')">
+        📈 گزارش‌ها
+        </button>
+
+        <button class="back" onclick="closePanel()">
+        بازگشت
+        </button>
+        `;
+    }
+
+    panel.style.display = "block";
+    panel.scrollIntoView({behavior:"smooth"});
 }
-};
-</script></body>
+
+function closePanel(){
+    document.getElementById("panel").style.display = "none";
+}
+
+</script>
+
+</body>
 </html>
