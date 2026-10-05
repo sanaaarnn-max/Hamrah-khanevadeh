@@ -2,316 +2,184 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>همراه خانواده</title>
 
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  background:#fff;
-  color:#333
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#fff8fb;
+ color:#333;
 }
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:18px
+header{
+ background:#f7c6d9;
+ text-align:center;
+ padding:22px 12px;
 }
-.header{
-  background:#f8c9dc;
-  border-radius:24px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 8px 25px rgba(180,80,120,.12)
-}
-.header h1{
-  margin:0 0 8px;
-  font-size:30px;
-  color:#222
-}
-.header p{
-  margin:6px 0;
-  color:#333
-}
-.demo{
-  display:inline-block;
-  margin-top:8px;
-  padding:6px 15px;
-  border-radius:20px;
-  background:#fff;
-  color:#222;
-  font-size:13px
-}
+header h1{margin:0;color:#8d3c5d;font-size:28px}
+header p{margin:7px 0}
+.school{font-weight:bold;color:#653b4d}
+.demo{color:#111;font-size:12px;margin-top:7px}
+
+.container{max-width:1100px;margin:20px auto;padding:10px}
 .card{
-  background:#fff;
-  border:1px solid #f0d9e3;
-  border-radius:20px;
-  padding:20px;
-  margin-top:18px;
-  box-shadow:0 6px 20px rgba(180,80,120,.08)
+ background:#fff;
+ border:1px solid #efd6e1;
+ border-radius:18px;
+ padding:18px;
+ margin-bottom:16px;
+ box-shadow:0 5px 18px rgba(120,50,80,.08);
 }
-.login-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px
+.login{max-width:460px;margin:35px auto}
+.roles{display:flex;gap:7px;margin-bottom:15px}
+.roles button{
+ flex:1;padding:11px;border:0;border-radius:11px;
+ background:#f6e1e9;cursor:pointer;
 }
-.login-box{
-  background:#fff7fa;
-  border:1px solid #f0d9e3;
-  border-radius:18px;
-  padding:18px
-}
+.roles button.active{background:#d978a0;color:#fff}
+label{display:block;margin:10px 0 5px}
 input,select,textarea{
-  width:100%;
-  padding:12px;
-  margin:5px 0 10px;
-  border:1px solid #decbd4;
-  border-radius:12px;
-  background:#fff;
-  font-family:inherit
+ width:100%;padding:12px;border:1px solid #dfc7d2;
+ border-radius:10px;background:#fff;
 }
-button{
-  border:0;
-  border-radius:12px;
-  padding:10px 15px;
-  font-family:inherit;
-  cursor:pointer
+textarea{min-height:90px}
+.btn{
+ background:#d978a0;color:white;border:0;
+ border-radius:10px;padding:10px 15px;
+ cursor:pointer;margin:4px;
 }
-.primary{
-  background:#df82a8;
-  color:#fff
-}
-.secondary{
-  background:#f6e0e9;
-  color:#733c53
-}
-.danger{
-  background:#d95772;
-  color:#fff
-}
-.nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:16px 0
-}
+.btn.light{background:#f2dce5;color:#71364f}
+.btn.red{background:#c95d73}
+.nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}
 .nav button{
-  background:#fbe7ef;
-  color:#70394f
+ border:0;border-radius:10px;padding:10px 13px;
+ background:#f2dce5;color:#63344a;cursor:pointer;
 }
-.nav button.active{
-  background:#df82a8;
-  color:white
-}
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap
-}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+ gap:12px;
 }
 .stat{
-  background:#fff8fa;
-  border:1px solid #f0dbe3;
-  border-radius:16px;
-  padding:18px;
-  text-align:center
+ background:#fff0f6;
+ border-radius:15px;
+ padding:17px;
+ text-align:center;
 }
-.stat b{
-  display:block;
-  margin-top:7px;
-  color:#c75b82;
-  font-size:23px
+.stat b{display:block;font-size:25px;color:#9b4167}
+.student{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ padding:13px 4px;
+ border-bottom:1px solid #f0e0e7;
 }
-.list{
-  display:grid;
-  gap:10px
+.badge{
+ display:inline-block;
+ background:#f2d1df;
+ color:#71384f;
+ padding:4px 8px;
+ border-radius:15px;
+ font-size:11px;
+ margin:2px;
 }
-.item{
-  background:#fff8fa;
-  border:1px solid #f0dbe3;
-  border-radius:15px;
-  padding:14px
+.notice,.message{
+ background:#fff3f7;
+ padding:12px;
+ border-radius:11px;
+ margin:8px 0;
 }
-.row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap
+.success{
+ background:#e7f7ee;
+ color:#246445;
+ padding:10px;
+ border-radius:10px;
+ margin-top:10px;
 }
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin:10px 0
+.error{
+ background:#ffe8ee;
+ color:#a52f50;
+ padding:10px;
+ border-radius:10px;
+ margin-top:10px;
 }
-.chip{
-  background:#f7dce6;
-  border-radius:20px;
-  padding:6px 10px;
-  font-size:12px
+.small{font-size:12px;color:#777}
+.checks{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:7px;
+ margin-top:10px;
 }
-.notice{
-  background:#fff7ce;
-  border:1px solid #efdfa0;
-  border-radius:13px;
-  padding:13px;
-  margin:12px 0
+.check{
+ background:#fff5f8;
+ padding:9px;
+ border-radius:9px;
 }
-.table-wrap{
-  overflow:auto
-}
-table{
-  width:100%;
-  min-width:650px;
-  border-collapse:collapse
-}
-th,td{
-  padding:10px;
-  border-bottom:1px solid #eddce3;
-  text-align:right
-}
-th{
-  background:#fbe7ef
-}
-.small{
-  font-size:12px;
-  color:#777
-}
-.empty{
-  text-align:center;
-  color:#888;
-  padding:25px
-}
-.hidden{
-  display:none!important
-}
-.footer{
-  text-align:center;
-  color:#999;
-  font-size:12px;
-  padding:22px
-}
-@media(max-width:800px){
-  .login-grid,
-  .stats{
-    grid-template-columns:1fr
-  }
-  .container{
-    padding:10px
-  }
-  .header h1{
-    font-size:25px
-  }
-}
+.hidden{display:none!important}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<header class="header">
-  <h1>🌱 همراه خانواده</h1>
-  <p>سامانه هوشمند ارتباط مدرسه و خانواده</p>
-  <p><b>دبستان دخترانه امام حسین (ع) ، سرخس</b></p>
-  <span class="demo">نسخه نمایشی</span>
+<header>
+<h1>🌱 همراه خانواده</h1>
+<p>سامانه هوشمند ارتباط مدرسه و خانواده</p>
+<div class="school">دبستان دخترانه امام حسین (ع) ، سرخس</div>
+<div class="demo">نسخه نمایشی</div>
 </header>
 
-<!-- LOGIN -->
-<section id="loginPage" class="card">
+<div class="container">
 
+<section id="loginPage" class="card login">
 <h2>ورود به سامانه</h2>
 
-<div class="login-grid">
+<div class="roles">
+<button id="parentBtn" class="active" onclick="changeRole('parent')">والد</button>
+<button id="teacherBtn" onclick="changeRole('teacher')">معلم</button>
+<button id="adminBtn" onclick="changeRole('admin')">مدیر</button>
+</div>
 
-<div class="login-box">
-<h3>👨‍👩‍👧 ورود والدین</h3>
-<p class="small">نام کاربری و رمز عبور = کد دانش‌آموز</p>
+<label>نام کاربری</label>
+<input id="username">
 
-<input id="parentUsername" placeholder="کد دانش‌آموز">
-<input id="parentPassword" type="password" placeholder="کد دانش‌آموز">
+<label>رمز عبور</label>
+<input id="password" type="password">
 
-<button class="primary" onclick="parentLogin()">
-ورود والدین
+<button class="btn" style="width:100%;margin-top:12px" onclick="login()">
+ورود
 </button>
-</div>
 
-<div class="login-box">
-<h3>👩‍🏫 ورود معلم</h3>
-
-<input id="teacherUsername" placeholder="نام کاربری">
-<input id="teacherPassword" type="password" placeholder="رمز عبور">
-
-<button class="primary" onclick="teacherLogin()">
-ورود معلم
-</button>
-</div>
-
-<div class="login-box">
-<h3>🏫 ورود مدیر</h3>
-
-<input id="adminUsername" placeholder="نام کاربری">
-<input id="adminPassword" type="password" placeholder="رمز عبور">
-
-<button class="primary" onclick="adminLogin()">
-ورود مدیر
-</button>
-</div>
-
-</div>
-
-<div id="loginError" class="notice hidden"></div>
-
+<div id="loginMessage"></div>
 </section>
 
+<section id="mainPage" class="hidden">
 
-<!-- PANEL -->
-
-<section id="panelPage" class="hidden">
-
-<div class="card top">
-
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
 <div>
-<b id="welcomeText"></b>
-<div id="roleText" class="small"></div>
+<h2 id="welcome" style="margin:0"></h2>
+<div id="roleInfo" class="small"></div>
 </div>
-
-<button class="danger" onclick="logout()">
-خروج
-</button>
-
+<button class="btn light" onclick="logout()">خروج</button>
 </div>
-
-<div id="navigation" class="nav"></div>
+</div>
 
 <div id="content"></div>
 
 </section>
 
-<div class="footer">
-همراه خانواده • نسخه نمایشی مدرسه
 </div>
-
-</div>
-
 
 <script>
 
 /* =========================
-   دانش‌آموزان
+   دانش آموزان
 ========================= */
 
-const students = [
-
-/* پایه اول */
+const students=[
 ["0810647133","مهرسانا اسلام پناه",1],
 ["0810656477","اسرا انصاریان",1],
 ["0810641437","دلارام بالفروش قاسم زاده",1],
@@ -339,7 +207,6 @@ const students = [
 ["0810655861","ارغوان وزیری",1],
 ["0810642832","آوا یاوری",1],
 
-/* پایه دوم */
 ["0982308140","آوینا احتشام",2],
 ["0810639483","مهرگان امیری",2],
 ["0810612623","نفس بندانی",2],
@@ -364,7 +231,6 @@ const students = [
 ["0972199470","سلین میرپیشی",2],
 ["4870570599","نورسا ولی دوست",2],
 
-/* پایه سوم */
 ["0810605651","مائده اسدی",3],
 ["0810613824","پریا اسدیان نژاد",3],
 ["0971959791","آرشیدا انصاری نیا",3],
@@ -390,7 +256,6 @@ const students = [
 ["0810607042","حلما نجاری دوحصاران",3],
 ["0981964370","آناهیتا نجاری عبدل آبادی",3],
 
-/* پایه چهارم */
 ["0810597489","سارا امیدفر",4],
 ["0810592584","حسنا پناهیان",4],
 ["0810589761","الینا تاجکی",4],
@@ -418,7 +283,6 @@ const students = [
 ["0971773610","نشاط نیک منش",4],
 ["0810600307","فریماه هرمزی",4],
 
-/* پایه پنجم */
 ["0961203471","آیسان احمدی",5],
 ["0810558602","اسرا احمدی",5],
 ["0810576937","آیدا اخروی",5],
@@ -447,7 +311,6 @@ const students = [
 ["0971694869","ضحا وزیری",5],
 ["4870516276","حسیبا ولی دوست",5],
 
-/* پایه ششم */
 ["0810546183","فاطمه ارمی نغز",6],
 ["0810536315","آیناز اصغر زاده",6],
 ["0810531331","مهرانه بلوچی",6],
@@ -472,221 +335,58 @@ const students = [
 ["0810536919","نازگل نظام نیا",6],
 ["0810535629","بهار نعمت پور",6],
 ["0810544751","اسرا نوری",6]
-
-].map((x,i)=>({
- id:i+1,
- code:x[0],
- name:x[1],
- grade:x[2]
-}));
+].map(x=>({code:x[0],name:x[1],grade:x[2]}));
 
 
 /* =========================
-   معلمان
+   معلم ها
 ========================= */
 
-const defaultTeachers=[
-
-{
- username:"mandoosti",
- password:"1122",
- name:"خانم مندوستی",
- grades:[1]
-},
-
-{
- username:"asadi",
- password:"2233",
- name:"خانم اسدی",
- grades:[2]
-},
-
-{
- username:"torshizi",
- password:"3344",
- name:"خانم ترشیزی",
- grades:[3]
-},
-
-{
- username:"saidi",
- password:"4455",
- name:"خانم صیدی",
- grades:[4,5,6]
-},
-
-{
- username:"shahraki",
- password:"5566",
- name:"خانم شهرکی",
- grades:[4,5,6]
-},
-
-{
- username:"esfandi",
- password:"6677",
- name:"خانم اسفندی",
- grades:[4,5,6]
-},
-
-{
- username:"tavakoli",
- password:"7788",
- name:"خانم توکلی",
- grades:[1,2,3,4,5,6]
-},
-
-{
- username:"ghasemzadeh",
- password:"8899",
- name:"خانم قاسم زاده",
- grades:[1,2,3,4,5,6]
-},
-
-{
- username:"yousefi",
- password:"1133",
- name:"خانم یوسفی",
- grades:[2,3,4,5,6]
-},
-
-{
- username:"komeili",
- password:"1144",
- name:"خانم کمیلی",
- grades:[1,2,3,4,5,6]
-},
-
-{
- username:"shariati",
- password:"1155",
- name:"خانم شریعتی",
- grades:[1,2,3,4,5,6]
-},
-
-{
- username:"khanebaz",
- password:"1333",
- name:"خانم خانه باز",
- grades:[1,2,3,4,5,6]
-},
-
-{
- username:"dana",
- password:"1166",
- name:"خانم دانا",
- grades:[1,2,3,4,5,6]
-}
-
+const teachers=[
+{u:"mandoosti",p:"1122",name:"خانم مندوستی",grades:[1]},
+{u:"asadi",p:"2233",name:"خانم اسدی",grades:[2]},
+{u:"torshizi",p:"3344",name:"خانم ترشیزی",grades:[3]},
+{u:"saidi",p:"4455",name:"خانم صیدی",grades:[4,5,6]},
+{u:"shahraki",p:"5566",name:"خانم شهرکی",grades:[4,5,6]},
+{u:"esfandi",p:"6677",name:"خانم اسفندی",grades:[4,5,6]},
+{u:"tavakoli",p:"7788",name:"خانم توکلی",grades:[1,2,3,4,5,6]},
+{u:"ghasemzadeh",p:"8899",name:"خانم قاسم زاده",grades:[1,2,3,4,5,6]},
+{u:"yousefi",p:"1133",name:"خانم یوسفی",grades:[2,3,4,5,6]},
+{k:"komeili",u:"komeili",p:"1144",name:"خانم کمیلی",grades:[1,2,3,4,5,6]},
+{u:"shariati",p:"1155",name:"خانم شریعتی",grades:[1,2,3,4,5,6]},
+{u:"khanebaz",p:"1333",name:"خانم خانه باز",grades:[1,2,3,4,5,6]},
+{u:"dana",p:"1166",name:"خانم دانا",grades:[1,2,3,4,5,6]}
 ];
 
+const admin={u:"admin",p:"1234",name:"مدیر مدرسه"};
+
 
 /* =========================
-   اطلاعات برنامه
+   وضعیت
 ========================= */
 
-const STORAGE_KEY="hamrah_khanevadeh_complete";
+let role="parent";
+let currentUser=null;
 
-const defaultData={
- teachers:defaultTeachers,
-
- announcements:[
-  {
-   id:1,
-   title:"آغاز سال تحصیلی",
-   text:"به سامانه همراه خانواده خوش آمدید.",
-   date:"۱۴۰۵/۰۷/۰۵"
-  }
- ],
-
- requests:[],
-
+let data=JSON.parse(localStorage.getItem("hamrahData")||"null")||{
+ assignments:{},
+ announcements:[],
  messages:[],
-
- calendar:[
-  {
-   id:1,
-   title:"جلسه اولیا و مربیان",
-   date:"۱۴۰۵/۰۷/۲۰",
-   text:"اطلاعات جلسه از طریق اطلاعیه مدرسه اعلام خواهد شد."
-  }
- ],
-
- records:{}
+ requests:[],
+ calendar:[],
+ attendance:{},
+ grades:{}
 };
 
-let data=loadData();
-let currentUser=null;
-let currentPage="home";
-
-
-function loadData(){
-
- try{
-
-  const saved=localStorage.getItem(STORAGE_KEY);
-
-  if(saved){
-
-   const parsed=JSON.parse(saved);
-
-   return {
-    ...defaultData,
-    ...parsed,
-    teachers:parsed.teachers || defaultTeachers,
-    announcements:parsed.announcements || [],
-    requests:parsed.requests || [],
-    messages:parsed.messages || [],
-    calendar:parsed.calendar || [],
-    records:parsed.records || {}
-   };
-
-  }
-
- }catch(e){}
-
- return JSON.parse(JSON.stringify(defaultData));
+function save(){
+ localStorage.setItem("hamrahData",JSON.stringify(data));
 }
 
-
-function saveData(){
-
- localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify(data)
- );
-
-}
-
-
-function normalize(value){
-
- return String(value || "")
- .replace(/[۰-۹]/g,function(d){
-   return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
- })
+function normalize(v){
+ return String(v||"")
+ .replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d))
  .replace(/\s/g,"")
  .trim();
-
-}
-
-
-function escapeHTML(value){
-
- return String(value || "")
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
-
-}
-
-
-function gradeName(g){
-
- return "پایه "+g+" ابتدایی";
-
 }
 
 
@@ -694,489 +394,518 @@ function gradeName(g){
    ورود
 ========================= */
 
-function parentLogin(){
+function changeRole(r){
+ role=r;
 
- const username=normalize(
-  document.getElementById("parentUsername").value
- );
+ document.getElementById("parentBtn").classList.toggle("active",r==="parent");
+ document.getElementById("teacherBtn").classList.toggle("active",r==="teacher");
+ document.getElementById("adminBtn").classList.toggle("active",r==="admin");
 
- const password=normalize(
-  document.getElementById("parentPassword").value
- );
+ document.getElementById("loginMessage").innerHTML="";
+}
 
- const student=students.find(function(s){
+function login(){
 
-  return normalize(s.code)===username &&
-         normalize(s.code)===password;
+ const u=normalize(document.getElementById("username").value);
+ const p=normalize(document.getElementById("password").value);
 
- });
+ let found=null;
 
- if(!student){
-
-  showLoginError("کد دانش‌آموز صحیح نیست.");
-  return;
-
+ if(role==="admin"){
+   if(u===admin.u && p===admin.p) found=admin;
  }
 
- currentUser={
-  type:"parent",
-  student:student
- };
-
- openPanel();
-
-}
-
-
-function teacherLogin(){
-
- const username=document
- .getElementById("teacherUsername")
- .value
- .trim()
- .toLowerCase();
-
- const password=normalize(
-  document.getElementById("teacherPassword").value
- );
-
- const teacher=data.teachers.find(function(t){
-
-  return t.username.toLowerCase()===username &&
-         normalize(t.password)===password;
-
- });
-
- if(!teacher){
-
-  showLoginError("نام کاربری یا رمز عبور معلم صحیح نیست.");
-  return;
-
+ if(role==="teacher"){
+   found=teachers.find(t=>
+     t.u.toLowerCase()===u.toLowerCase() &&
+     normalize(t.p)===p
+   );
  }
 
- currentUser={
-  type:"teacher",
-  teacher:teacher
- };
-
- openPanel();
-
-}
-
-
-function adminLogin(){
-
- const username=document
- .getElementById("adminUsername")
- .value
- .trim()
- .toLowerCase();
-
- const password=normalize(
-  document.getElementById("adminPassword").value
- );
-
- if(username!=="admin" || password!=="1234"){
-
-  showLoginError("نام کاربری یا رمز عبور مدیر صحیح نیست.");
-  return;
-
+ if(role==="parent"){
+   found=students.find(s=>
+     normalize(s.code)===u &&
+     normalize(s.code)===p
+   );
  }
 
- currentUser={
-  type:"admin"
- };
+ if(!found){
+   document.getElementById("loginMessage").innerHTML=
+   '<div class="error">نام کاربری یا رمز عبور اشتباه است.</div>';
+   return;
+ }
 
- openPanel();
+ currentUser=found;
 
-}
+ document.getElementById("loginPage").classList.add("hidden");
+ document.getElementById("mainPage").classList.remove("hidden");
 
+ document.getElementById("welcome").textContent=
+ "سلام، "+found.name;
 
-function showLoginError(message){
-
- const box=document.getElementById("loginError");
-
- box.textContent=message;
-
- box.classList.remove("hidden");
-
-}
-
-
-function openPanel(){
-
- document
- .getElementById("loginPage")
- .classList.add("hidden");
-
- document
- .getElementById("panelPage")
- .classList.remove("hidden");
-
- currentPage="home";
+ document.getElementById("roleInfo").textContent=
+ role==="admin"?"دسترسی کامل مدیر":
+ role==="teacher"?"پنل اختصاصی معلم":
+ "پنل اختصاصی والد";
 
  render();
-
 }
-
 
 function logout(){
 
  currentUser=null;
 
- document
- .getElementById("panelPage")
- .classList.add("hidden");
+ document.getElementById("mainPage").classList.add("hidden");
+ document.getElementById("loginPage").classList.remove("hidden");
 
- document
- .getElementById("loginPage")
- .classList.remove("hidden");
+ document.getElementById("username").value="";
+ document.getElementById("password").value="";
 
+ changeRole("parent");
 }
 
 
 /* =========================
-   دانش‌آموزان مجاز
+   ابزارها
 ========================= */
 
-function getAllowedStudents(){
+function nav(items){
+ return `<div class="nav">
+ ${items.map(x=>`<button onclick="${x[1]}">${x[0]}</button>`).join("")}
+ </div>`;
+}
 
- if(currentUser.type==="admin"){
+function getStudent(code){
+ return students.find(s=>s.code===code);
+}
 
-  return students;
+function getTeacher(username){
+ return teachers.find(t=>t.u===username);
+}
 
+
+/*
+ هر دانش آموز می تواند چند معلم داشته باشد.
+ assignments:
+ {
+   "کددانش‌آموز":["mandoosti","tavakoli","..."]
+ }
+*/
+
+function getAssignedStudents(username){
+
+ const explicitlyAssigned=students.filter(s=>
+   data.assignments[s.code] &&
+   data.assignments[s.code].includes(username)
+ );
+
+ /*
+ اگر مدیر هنوز برای هیچ دانش‌آموزی اختصاص نداده باشد،
+ معلم بر اساس پایه‌های خودش دانش‌آموزان را می‌بیند.
+ به محض اینکه برای یک دانش‌آموز اختصاص صریح ثبت شود،
+ همان اختصاص ملاک است.
+ */
+
+ const hasAnyAssignment=Object.keys(data.assignments).some(code=>
+   Array.isArray(data.assignments[code]) &&
+   data.assignments[code].length>0
+ );
+
+ if(!hasAnyAssignment){
+   const t=getTeacher(username);
+   return students.filter(s=>t && t.grades.includes(s.grade));
  }
 
- if(currentUser.type==="parent"){
-
-  return [currentUser.student];
-
- }
-
- return students.filter(function(student){
-
-  return currentUser.teacher.grades
-   .includes(student.grade);
-
- });
-
+ return explicitlyAssigned;
 }
 
 
 /* =========================
-   منو
+   رندر اصلی
 ========================= */
-
-function getNavigation(){
-
- if(currentUser.type==="parent"){
-
-  return [
-
-   ["home","🏠 خانه"],
-   ["study","📚 وضعیت تحصیلی"],
-   ["messages","💬 پیام‌های مدرسه"],
-   ["request","📝 درخواست به مدرسه"],
-   ["announcements","📢 اطلاعیه‌های مدرسه"],
-   ["calendar","📅 تقویم مدرسه"]
-
-  ];
-
- }
-
-
- if(currentUser.type==="teacher"){
-
-  return [
-
-   ["home","🏠 خانه"],
-   ["students","👩‍🎓 دانش‌آموزان من"],
-   ["sendMessage","💬 پیام به خانواده"],
-   ["announcements","📢 اطلاعیه‌ها"]
-
-  ];
-
- }
-
-
- return [
-
-  ["home","🏠 داشبورد"],
-  ["students","👩‍🎓 مدیریت دانش‌آموزان"],
-  ["teachers","👩‍🏫 مدیریت معلمان"],
-  ["announcements","📢 اطلاعیه‌ها"],
-  ["requests","📝 درخواست‌ها"],
-  ["messages","💬 پیام‌ها"],
-  ["calendar","📅 تقویم مدرسه"],
-  ["report","📊 گزارش مدیر"]
-
- ];
-
-}
-
-
-function goTo(page){
-
- currentPage=page;
-
- render();
-
-}
-
 
 function render(){
 
- const welcome=document.getElementById("welcomeText");
+ if(role==="admin") adminHome();
+ if(role==="teacher") teacherHome();
+ if(role==="parent") parentHome();
 
- const role=document.getElementById("roleText");
-
- if(currentUser.type==="parent"){
-
-  welcome.textContent=
-   "سلام "+currentUser.student.name+" 🌷";
-
-  role.textContent="پنل والدین";
-
- }
-
- else if(currentUser.type==="teacher"){
-
-  welcome.textContent=
-   "سلام "+currentUser.teacher.name+" 🌷";
-
-  role.textContent="پنل معلم";
-
- }
-
- else{
-
-  welcome.textContent="سلام مدیر مدرسه 🌷";
-
-  role.textContent="پنل مدیریت";
-
- }
+}
 
 
- const nav=document.getElementById("navigation");
+/* =========================
+   مدیر
+========================= */
 
- nav.innerHTML=getNavigation().map(function(item){
+function adminHome(){
 
-  return `
-   <button
-    class="${currentPage===item[0]?"active":""}"
-    onclick="goTo('${item[0]}')">
-    ${item[1]}
-   </button>
-  `;
-
- }).join("");
-
-
- const pages={
-
-  home:renderHome,
-  study:renderStudy,
-  messages:renderParentMessages,
-  request:renderRequest,
-  announcements:renderAnnouncements,
-  calendar:renderCalendar,
-  students:renderStudents,
-  sendMessage:renderSendMessage,
-  teachers:renderTeachers,
-  requests:renderRequests,
-  report:renderReport
-
- };
+ const assigned=Object.values(data.assignments)
+ .filter(a=>Array.isArray(a)&&a.length>0).length;
 
  document.getElementById("content").innerHTML=
-  (pages[currentPage]||renderHome)();
+ nav([
+ ["داشبورد","adminHome()"],
+ ["مدیریت دانش‌آموزان","adminStudents()"],
+ ["اختصاص معلم","assignmentPage()"],
+ ["مدیریت معلم‌ها","adminTeachers()"],
+ ["اطلاعیه‌ها","adminAnnouncements()"],
+ ["درخواست‌ها","adminRequests()"],
+ ["تقویم مدرسه","adminCalendar()"],
+ ["گزارش مدیر","managerReport()"]
+ ])+
 
+ `<div class="grid">
+
+ <div class="stat">
+ <b>${students.length}</b>
+ دانش‌آموز
+ </div>
+
+ <div class="stat">
+ <b>${teachers.length}</b>
+ معلم
+ </div>
+
+ <div class="stat">
+ <b>${assigned}</b>
+ دانش‌آموز دارای معلم اختصاصی
+ </div>
+
+ <div class="stat">
+ <b>${data.requests.length}</b>
+ درخواست والدین
+ </div>
+
+ </div>
+
+ <div class="card">
+ <h3>🌸 کنترل هوشمند ارتباط</h3>
+ <p>
+ مدیر می‌تواند برای هر دانش‌آموز یک یا چند معلم انتخاب کند.
+ یک معلم نیز می‌تواند چندین دانش‌آموز داشته باشد.
+ </p>
+ <button class="btn" onclick="assignmentPage()">
+ مدیریت اختصاص معلم
+ </button>
+ </div>`;
 }
 
 
 /* =========================
-   خانه
+   مدیریت دانش آموزان
 ========================= */
 
-function renderHome(){
+function adminStudents(){
 
- const list=getAllowedStudents();
+ document.getElementById("content").innerHTML=
+ nav([["بازگشت","adminHome()"]])+
 
- if(currentUser.type==="parent"){
+ `<div class="card">
+ <h3>مدیریت دانش‌آموزان</h3>
 
-  const s=list[0];
+ <input id="studentSearch"
+ placeholder="جستجوی نام یا کد دانش‌آموز..."
+ oninput="drawStudents()">
 
-  return `
-  <div class="card">
+ <div id="studentsList"></div>
+ </div>`;
 
-   <h2>🏠 خانه</h2>
+ drawStudents();
+}
 
-   <div class="stats">
+function drawStudents(){
 
-    <div class="stat">
-     دانش‌آموز
-     <b>${escapeHTML(s.name)}</b>
+ const q=normalize(
+ document.getElementById("studentSearch")?.value||""
+ ).toLowerCase();
+
+ const arr=students.filter(s=>
+ s.name.toLowerCase().includes(q) ||
+ s.code.includes(q)
+ );
+
+ document.getElementById("studentsList").innerHTML=
+ arr.map(s=>{
+
+   const assigned=data.assignments[s.code]||[];
+
+   return `
+   <div class="student">
+
+    <div>
+     <b>${s.name}</b>
+     <div class="small">پایه ${s.grade}</div>
     </div>
 
-    <div class="stat">
-     پایه
-     <b>${gradeName(s.grade)}</b>
+    <div>
+      ${
+       assigned.length
+       ?
+       assigned.map(u=>
+        `<span class="badge">
+        ${getTeacher(u)?.name||u}
+        </span>`
+       ).join("")
+       :
+       `<span class="small">معلم اختصاص داده نشده</span>`
+      }
     </div>
 
-    <div class="stat">
-     کلاس
-     <b>کلاس اصلی</b>
-    </div>
-
-   </div>
-
-   <div class="notice">
-    این حساب فقط اطلاعات فرزند شما را نمایش می‌دهد.
-   </div>
-
-  </div>
-  `;
-
- }
-
-
- if(currentUser.type==="teacher"){
-
-  return `
-  <div class="card">
-
-   <h2>🏠 داشبورد معلم</h2>
-
-   <div class="stats">
-
-    <div class="stat">
-     دانش‌آموزان مجاز
-     <b>${list.length}</b>
-    </div>
-
-    <div class="stat">
-     پایه‌ها
-     <b>${currentUser.teacher.grades.join("، ")}</b>
-    </div>
-
-    <div class="stat">
-     پیام‌ها
-     <b>${data.messages.filter(m=>m.teacher===currentUser.teacher.username).length}</b>
-    </div>
-
-   </div>
-
-   <div class="notice">
-    فقط دانش‌آموزان پایه‌های اختصاص‌داده‌شده به شما نمایش داده می‌شوند.
-   </div>
-
-  </div>
-  `;
-
- }
-
-
- return `
- <div class="card">
-
-  <h2>🏠 داشبورد مدیریت</h2>
-
-  <div class="stats">
-
-   <div class="stat">
-    دانش‌آموزان
-    <b>${students.length}</b>
-   </div>
-
-   <div class="stat">
-    معلمان
-    <b>${data.teachers.length}</b>
-   </div>
-
-   <div class="stat">
-    اطلاعیه‌ها
-    <b>${data.announcements.length}</b>
-   </div>
-
-   <div class="stat">
-    درخواست‌ها
-    <b>${data.requests.length}</b>
-   </div>
-
-   <div class="stat">
-    پیام‌ها
-    <b>${data.messages.length}</b>
-   </div>
-
-   <div class="stat">
-    رویدادها
-    <b>${data.calendar.length}</b>
-   </div>
-
-  </div>
-
-  <div class="notice">
-   مدیر به تمام دانش‌آموزان، معلمان و تنظیمات سامانه دسترسی دارد.
-  </div>
-
- </div>
- `;
-
+   </div>`;
+ }).join("");
 }
 
 
 /* =========================
-   وضعیت تحصیلی
+   اختصاص چند معلم
 ========================= */
 
-function renderStudy(){
+function assignmentPage(){
 
- const student=currentUser.student;
+ document.getElementById("content").innerHTML=
+ nav([["بازگشت","adminHome()"]])+
 
- const record=data.records[student.id] || {
+ `<div class="card">
 
-  math:"17",
-  reading:"18",
-  behavior:"عالی",
-  attendance:"منظم"
+ <h3>👩‍🏫 اختصاص معلم به دانش‌آموز</h3>
 
- };
+ <p class="small">
+ برای هر دانش‌آموز می‌توانی هر تعداد معلم که لازم است انتخاب کنی.
+ </p>
 
- return `
- <div class="card">
+ <label>پایه</label>
 
-  <h2>📚 وضعیت تحصیلی</h2>
+ <select id="gradeFilter" onchange="drawAssignments()">
+ <option value="0">همه پایه‌ها</option>
+ <option value="1">پایه اول</option>
+ <option value="2">پایه دوم</option>
+ <option value="3">پایه سوم</option>
+ <option value="4">پایه چهارم</option>
+ <option value="5">پایه پنجم</option>
+ <option value="6">پایه ششم</option>
+ </select>
 
-  <h3>${escapeHTML(student.name)}</h3>
+ <label>جستجوی دانش‌آموز</label>
 
-  <div class="stats">
+ <input id="assignSearch"
+ placeholder="نام دانش‌آموز..."
+ oninput="drawAssignments()">
 
-   <div class="stat">
-    ریاضی
-    <b>${escapeHTML(record.math)}</b>
-   </div>
+ <div id="assignmentList"></div>
 
-   <div class="stat">
-    خواندن
-    <b>${escapeHTML(record.reading)}</b>
-   </div>
+ </div>`;
 
-   <div class="stat">
-    رفتار
-    <b>${escapeHTML(record.behavior)}</b>
-   </div>
+ drawAssignments();
+}
 
-   <div class="stat">
-    حضور
-    <b>${escapeHTML(record.attendance)}</b>
-   </div>
+function drawAssignments(){
 
-  </div>
+ const grade=Number(
+ document.getElementById("gradeFilter")?.value||0
+ );
 
- </div>
- `;
+ const q=normalize(
+ document.getElementById("assignSearch")?.value||""
+ ).toLowerCase();
 
+ const arr=students.filter(s=>
+ (!grade || s.grade===grade) &&
+ s.name.toLowerCase().includes(q)
+ );
+
+ document.getElementById("assignmentList").innerHTML=
+ arr.map(s=>{
+
+   const assigned=data.assignments[s.code]||[];
+
+   return `
+   <div class="card">
+
+    <b>${s.name}</b>
+    <span class="badge">پایه ${s.grade}</span>
+
+    <div class="checks">
+
+    ${teachers.map(t=>`
+
+      <label class="check">
+
+      <input
+       type="checkbox"
+       ${assigned.includes(t.u)?"checked":""}
+       onchange="setAssignment('${s.code}','${t.u}',this.checked)"
+      >
+
+      ${t.name}
+
+      </label>
+
+    `).join("")}
+
+    </div>
+
+    <div class="small">
+    معلم‌های انتخاب‌شده:
+    ${
+      assigned.length
+      ?assigned.map(u=>
+       `<span class="badge">${getTeacher(u)?.name||u}</span>`
+      ).join("")
+      :"هنوز انتخاب نشده"
+    }
+    </div>
+
+   </div>`;
+ }).join("");
+}
+
+function setAssignment(code,teacher,on){
+
+ if(!data.assignments[code])
+   data.assignments[code]=[];
+
+ if(on){
+
+   if(!data.assignments[code].includes(teacher))
+     data.assignments[code].push(teacher);
+
+ }else{
+
+   data.assignments[code]=
+   data.assignments[code].filter(x=>x!==teacher);
+
+ }
+
+ save();
 }
 
 
-/* ====
+/* =========================
+   معلم
+========================= */
+
+function teacherHome(){
+
+ const list=getAssignedStudents(currentUser.u);
+
+ document.getElementById("content").innerHTML=
+ nav([
+ ["داشبورد","teacherHome()"],
+ ["دانش‌آموزان من","teacherStudents()"],
+ ["پیام به خانواده","teacherMessage()"],
+ ["اطلاعیه‌ها","teacherAnnouncements()"]
+ ])+
+
+ `<div class="grid">
+
+ <div class="stat">
+ <b>${list.length}</b>
+ دانش‌آموز قابل مشاهده
+ </div>
+
+ <div class="stat">
+ <b>${currentUser.grades.length}</b>
+ پایه
+ </div>
+
+ </div>
+
+ <div class="card">
+
+ <h3>دسترسی شما</h3>
+
+ <p>
+ فقط دانش‌آموزانی که مدیر به شما اختصاص داده است
+ در بخش دانش‌آموزان من نمایش داده می‌شوند.
+ </p>
+
+ </div>`;
+}
+
+
+function teacherStudents(){
+
+ const list=getAssignedStudents(currentUser.u);
+
+ document.getElementById("content").innerHTML=
+ nav([["بازگشت","teacherHome()"]])+
+
+ `<div class="card">
+
+ <h3>👩‍🏫 دانش‌آموزان من</h3>
+
+ ${
+ list.length
+ ?
+ list.map(s=>`
+
+ <div class="student">
+
+ <div>
+ <b>${s.name}</b>
+ <div class="small">پایه ${s.grade}</div>
+ </div>
+
+ <button class="btn light"
+ onclick="teacherStudent('${s.code}')">
+ پرونده
+ </button>
+
+ </div>
+
+ `).join("")
+ :
+ "<p>دانش‌آموزی برای شما اختصاص داده نشده است.</p>"
+ }
+
+ </div>`;
+}
+
+
+function teacherStudent(code){
+
+ const allowed=getAssignedStudents(currentUser.u)
+ .some(s=>s.code===code);
+
+ if(!allowed)return;
+
+ const s=getStudent(code);
+
+ const teachersOfStudent=
+ data.assignments[code]||[];
+
+ document.getElementById("content").innerHTML=
+ nav([["بازگشت","teacherStudents()"]])+
+
+ `<div class="card">
+
+ <h3>پرونده دانش‌آموز</h3>
+
+ <h3>${s.name}</h3>
+
+ <p>پایه: ${s.grade}</p>
+
+ <p>
+ <b>معلم‌های این دانش‌آموز:</b>
+ </p>
+
+ ${
+ teachersOfStudent.length
+ ?
+ teachersOfStudent.map(u=>
+ `<span class="badge">${getTeacher(u)?.name||u}</span>`
+ ).join("")
+ :
+ "اختصاصی ثبت نشده"
+ }
+
+ <hr>
+
+ <p>وضعیت تحصیلی: ثبت نشده</p>
+ <p>حضور و غیاب: ثبت نشده</p>
+
+ </div>`;
+}
+
+
+/* =============
